@@ -9,11 +9,6 @@ using namespace std;
 
 int main() {
 
-
-    //vendedor.cargar();
-    //archivoVendedores.Guardar(vendedor);
-
-    //archivoC.Leer().mostrar();
     /**/MenuOpciones mo;
     mo.ingresoSistema();
     return 0;

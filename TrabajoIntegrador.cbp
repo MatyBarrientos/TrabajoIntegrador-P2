@@ -16,6 +16,7 @@
 					<Add directory="../TrabajoIntegrador" />
 					<Add directory="include" />
 					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -28,6 +29,7 @@
 					<Add directory="../TrabajoIntegrador" />
 					<Add directory="include" />
 					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,8 +52,6 @@
 		<Unit filename="Categoria.h" />
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h" />
-		<Unit filename="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador/MenuVendedor.cpp" />
-		<Unit filename="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador/MenuVendedor.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="Funciones.cpp" />
@@ -62,6 +62,8 @@
 		<Unit filename="MenuOpciones.h" />
 		<Unit filename="MenuSalida.cpp" />
 		<Unit filename="MenuSalida.h" />
+		<Unit filename="MenuVendedor.cpp" />
+		<Unit filename="MenuVendedor.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
 		<Unit filename="Producto.cpp" />
