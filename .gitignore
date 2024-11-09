@@ -1,0 +1,24 @@
+# Ignorar archivos compilados
+*.exe
+*.o
+*.out
+*.a
+*.so
+
+# Ignorar archivos de backup
+*.bak
+*.tmp
+*.swp
+
+# Ignorar directorios de construcción
+build/
+bin/
+obj/
+Temas/
+Auxiliares/
+Ejercicios de prueba/
+Pruebas de las clases/
+
+# Ignorar archivos de configuración de IDE
+*.depend
+*.layout

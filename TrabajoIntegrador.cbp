@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TrabajoIntegrador" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TrabajoIntegrador" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../TrabajoIntegrador" />
+					<Add directory="include" />
+					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TrabajoIntegrador" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="../TrabajoIntegrador" />
+					<Add directory="include" />
+					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="ArchivoCliente.cpp" />
+		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoProducto.cpp" />
+		<Unit filename="ArchivoProducto.h" />
+		<Unit filename="ArchivoVendedor.cpp" />
+		<Unit filename="ArchivoVendedor.h" />
+		<Unit filename="Autenticacion.cpp" />
+		<Unit filename="Autenticacion.h" />
+		<Unit filename="Categoria.cpp" />
+		<Unit filename="Categoria.h" />
+		<Unit filename="Cliente.cpp" />
+		<Unit filename="Cliente.h" />
+		<Unit filename="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador/MenuVendedor.cpp" />
+		<Unit filename="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador/MenuVendedor.h" />
+		<Unit filename="Fecha.cpp" />
+		<Unit filename="Fecha.h" />
+		<Unit filename="Funciones.cpp" />
+		<Unit filename="Funciones.h" />
+		<Unit filename="MenuCliente.cpp" />
+		<Unit filename="MenuCliente.h" />
+		<Unit filename="MenuOpciones.cpp" />
+		<Unit filename="MenuOpciones.h" />
+		<Unit filename="MenuSalida.cpp" />
+		<Unit filename="MenuSalida.h" />
+		<Unit filename="Persona.cpp" />
+		<Unit filename="Persona.h" />
+		<Unit filename="Producto.cpp" />
+		<Unit filename="Producto.h" />
+		<Unit filename="Vendedor.cpp" />
+		<Unit filename="Vendedor.h" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
