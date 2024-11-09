@@ -1,9 +1,7 @@
 #include "MenuCliente.h"
 #include "MenuSalida.h"
 #include "Persona.h"
-#include "Cliente.h"
 #include "Vendedor.h"
-#include "ArchivoCliente.h"
 #include "ArchivoVendedor.h"
 
 
@@ -132,7 +130,6 @@ void  MenuCliente::OpcionCuatro() {
         while(opc != 0) {
             ms.mostrarSubMenuUnoTres();
             cin >> opc;
-            system("cls");
             switch(opc) {
             case 1:
                 system("cls");
@@ -162,7 +159,6 @@ void  MenuCliente::OpcionCuatro() {
             case 0:
                 cout << "Saliendo al menu principal..." << endl;
                 system("pause");
-
                 break;
             default:
                 cout << "Ingrese una opcion correcta." << endl;

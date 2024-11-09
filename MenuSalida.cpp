@@ -85,6 +85,16 @@ void MenuSalida::mostrarSubMenuUnoTres() {
     cout << "0 - Volver al menú anterior "<<endl;
     cout << " Seleccione una opcion: ";
 }
+void MenuSalida::mostrarSubMenuDosTres() {
+
+    cout << " ***Modificar datos Vendedor*** "<<endl;
+    cout << "1 - Modificar Nombre "<<endl;
+    cout << "2 - Modificar Apellido "<<endl;
+    cout << "3 - Modificar Nivel de Acceso "<<endl;
+    cout << "4 - Modificar Todo "<<endl;
+    cout << "0 - Volver al menú anterior "<<endl;
+    cout << " Seleccione una opcion: ";
+}
 
 
 

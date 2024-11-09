@@ -23,6 +23,7 @@ public:
 
     /////////////////////////////////
     void mostrarSubMenuUnoTres();
+    void mostrarSubMenuDosTres();
 
     /// Opciones
 

@@ -10,11 +10,14 @@ private:
 
 public:
     Vendedor();
+    Vendedor(Persona persona);
     Vendedor(Persona persona, int nivelAcceso, int IDvendedor);
     virtual ~Vendedor();
 
 
+    void cargar(int DNI);
     void cargar();
+    void cargarVendedor();
     void mostrar();
 
     //setters
@@ -22,6 +25,8 @@ public:
     void setNivelUsuario (int nivelUsuario);
     void setIdVendedor (int IDvendedor);
     void setEstado(bool estado);
+    ///Id
+    int IdVendedor();
 
     //getters
     int getIdUsuario();
@@ -30,6 +35,14 @@ public:
     int getNivelUsuario ();
     int getIdVendedor ();
     bool getEstado();
+
+    ////modificadores
+    void modificarApellido();
+    void modificarNombre();
+    void modificarNivel();
+
+
+
 
 
 protected:

@@ -57,8 +57,7 @@ void Persona::mostrar()
     cout<< _apellido;
     cout<<endl;
     cout<<"DNI: ";
-    /*cout<< _DNI;
-    cout<<endl;*/
+    cout<< _DNI<<endl;
     cout<<"Fecha de nacimiento: ";
     _fechaNacimiento.mostrarFecha();
 
