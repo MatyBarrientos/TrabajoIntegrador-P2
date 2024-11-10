@@ -6,6 +6,9 @@
 ArchivoCliente::ArchivoCliente() {
     strcpy(_nombreArchivo,"ArchivoCliente.dat");
 }
+ArchivoCliente::ArchivoCliente(const char *nombreArchivo) {
+    strcpy(_nombreArchivo,nombreArchivo);
+}
 ArchivoCliente::ArchivoCliente(bool backUp) {
     strcpy(_nombreArchivo,"ArchivoClienteBackUp.dat");
 }
@@ -20,6 +23,7 @@ bool ArchivoCliente::Guardar(const Cliente& cliente) {
     fclose(pArchivo);
     return ok;
 }
+
 bool ArchivoCliente::BackUp() {
     FILE *pArchivo = nullptr;
     FILE *pArchivoBackUp = nullptr;
@@ -97,6 +101,7 @@ bool ArchivoCliente::BajaRegistro() {
     }
     return resultado;
 }
+
 bool ArchivoCliente::AltaRegistro() {
     int DNI;
     Cliente cliente;
@@ -220,18 +225,6 @@ int ArchivoCliente::CantidadRegistros() {
     return cantidadRegistros;
 }
 
-void ArchivoCliente::Leer(int cantidadRegistros, Cliente *vector) {
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr) {
-        return;
-    }
-    for(int i = 0; i < cantidadRegistros; i++) {
-        fread(&vector[i], sizeof(Cliente), 1, pArchivo);
-    }
-    fclose(pArchivo);
-}
-
 void ArchivoCliente::Listar() {
     int cantidadRegistros=CantidadRegistros();
     FILE *pArchivo=nullptr;
@@ -249,7 +242,6 @@ void ArchivoCliente::Listar() {
     }
     fclose(pArchivo);
 }
-
 
 ArchivoCliente::~ArchivoCliente() {
     //dtor

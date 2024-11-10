@@ -1,4 +1,5 @@
 #include "Marca.h"
+#include "ArchivoMarca.h"
 #include "Funciones.h"
 #include <cstring>
 #include <iostream>
@@ -7,7 +8,8 @@ using namespace std;
 ///CONSTRUCTORES
 Marca::Marca()
 {
-    //ctor
+    _IdMarca=1;
+    strcpy(_nombre,"Generico");
 }
 
 Marca::Marca(int idMarca, const char* nombreMarca,const char* origenP, bool estado){
@@ -17,8 +19,8 @@ Marca::Marca(int idMarca, const char* nombreMarca,const char* origenP, bool esta
 }
 ///CARGAR Y MOSTRAR
 void Marca::cargar(){
-    cout<<"ID de la Marca: ";
-    cin>>_IdMarca;
+
+    _IdMarca=proxIDproducto();
     cout<<"Nombre de la marca: ";
     cargarCadena(_nombre,19);
     cout<<"Pais de origen: ";
@@ -34,7 +36,7 @@ void Marca::mostrar(){
 }
 
 ///GETTERS
-int   Marca::gerIdMarca(){return _IdMarca;}
+int   Marca::getIdMarca(){return _IdMarca;}
 char* Marca::getNombre(){return _nombre;}
 char* Marca::getPaisOrigen(){return _PaisOrigen;}
 bool  Marca::getEstado(){return _estado;}
@@ -45,6 +47,23 @@ void Marca::setNombre(const char* nombreMarca){strcpy(_nombre,nombreMarca);}
 void Marca::setPaisOrigen(const char* nombrePais){strcpy(_PaisOrigen,nombrePais);}
 void Marca::setEstado(bool estado){_estado=estado;}
 
+
+int Marca::proxIDproducto (){
+    ArchivoMarca archivoM;
+    int pos, nuevoID;
+    pos=archivoM.CantidadRegistros();
+    if(pos==0){
+        cout<<"Ingresar el primer ID de productos: ";
+        cin>>nuevoID;
+        return nuevoID;
+    }else{
+        Marca aux;
+        aux=archivoM.Leer(pos-1);
+        nuevoID=aux.getIdMarca();
+        nuevoID++;
+        return nuevoID;
+    }
+}
 Marca::~Marca()
 {
     //dtor

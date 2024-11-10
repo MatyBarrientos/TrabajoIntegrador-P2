@@ -42,6 +42,8 @@
 		</Compiler>
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoMarca.cpp" />
+		<Unit filename="ArchivoMarca.h" />
 		<Unit filename="ArchivoProducto.cpp" />
 		<Unit filename="ArchivoProducto.h" />
 		<Unit filename="ArchivoVendedor.cpp" />
@@ -60,10 +62,14 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Funciones.cpp" />
 		<Unit filename="Funciones.h" />
+		<Unit filename="Marca.cpp" />
+		<Unit filename="Marca.h" />
 		<Unit filename="MenuCliente.cpp" />
 		<Unit filename="MenuCliente.h" />
 		<Unit filename="MenuOpciones.cpp" />
 		<Unit filename="MenuOpciones.h" />
+		<Unit filename="MenuProducto.cpp" />
+		<Unit filename="MenuProducto.h" />
 		<Unit filename="MenuSalida.cpp" />
 		<Unit filename="MenuSalida.h" />
 		<Unit filename="MenuVendedor.cpp" />

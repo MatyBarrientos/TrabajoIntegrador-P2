@@ -9,8 +9,8 @@ private:
 
 public:
     ArchivoVendedor();
-    ArchivoVendedor(const char* nombreArchivo);
     ArchivoVendedor(bool backUp);
+    ArchivoVendedor(const char* nombreArchivo);
     bool Guardar(const Vendedor& vendedor);
     bool ModificarRegistro(const Vendedor& vendedor, int posicion);
     bool BajaRegistro();

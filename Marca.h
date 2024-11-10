@@ -17,7 +17,7 @@ public:
     void mostrar();
 
     ///getters
-    int gerIdMarca();
+    int getIdMarca();
     char* getNombre();
     char* getPaisOrigen();
     bool getEstado();
@@ -28,6 +28,8 @@ public:
     void setNombre(const char* nombreMarca);
     void setPaisOrigen(const char* nombrePais);
     void setEstado(bool estado);
+
+    int proxIDproducto ();
 
 
 

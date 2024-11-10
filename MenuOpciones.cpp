@@ -1,6 +1,7 @@
 #include "MenuSalida.h"
 #include "MenuOpciones.h"
 #include "MenuCliente.h"
+#include "MenuProducto.h"
 #include "MenuVendedor.h"
 #include "Cliente.h"
 #include "ArchivoCliente.h"
@@ -215,39 +216,31 @@ void MenuOpciones::opcionSubMenuDos() {
 void MenuOpciones::opcionSubMenuTres() {
     int opc = -1;
     MenuSalida ms;
-    MenuCliente mCliente;
+    MenuProducto mProducto;
     while(opc != 0) {
         ms.mostrarSubMenuUno(auth.nivelAcceso(),"Productos","Producto");
         cin >> opc;
         if(auth.nivelAcceso()) {
             switch(opc) {
-            case 1:
-                cout << "Productos 1." << endl;
-                system("pause");
+            case 1:///AGREGAR PRODUCTO (ID UNICO)
+                mProducto.agregarProducto();
                 break;
-            case 2:
-                cout << "Productos 2." << endl;
-                system("pause");
+            case 2:///CAMBIAR EL ESTADO DEL PRODUCTO
+                mProducto.cambiarEstadoProducto();
                 break;
-            case 3:
-                cout << "Productos 3." << endl;
-                system("pause");
+            case 3:///BUSCAR PRODUCTO POR ID
+                mProducto.buscarProducto();
                 break;
-            case 4:
-                cout << "Productos 4." << endl;
-                system("pause");
+            case 4:///MODIFICAR PRODUCTO
+                mProducto.modificarProducto();
                 break;
-            case 5:
-                cout << "Productos 5." << endl;
-                system("pause");
+            case 5:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
+                mProducto.listarProducto();
                 break;
-
             case 0:
                 cout << "Saliendo al menu principal..." << endl;
                 system("pause");
-
                 break;
-
             default:
                 cout << "Ingrese una opcion correcta." << endl;
                 system("pause");
@@ -256,19 +249,15 @@ void MenuOpciones::opcionSubMenuTres() {
             system("cls");
         } else {
             switch(opc) {
-            case 1:
-                cout << "Buscar Producto." << endl;
-                system("pause");
+            case 1:///BUSCAR PRODUCTO POR ID
+                mProducto.buscarProducto();
                 break;
-            case 2:
-                cout << "." << endl;
-                system("pause");
+            case 2:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
+                mProducto.listarProducto();
                 break;
             case 0:
                 cout << "Saliendo al menu principal..." << endl;
-
                 break;
-
             default:
                 cout << "Ingrese una opcion correcta." << endl;
                 system("pause");

@@ -1,21 +1,23 @@
 #include "ArchivoProducto.h"
+/*#include <cstdio>*/
 #include <cstring>
+#include "Producto.h"
 
-ArchivoProducto::ArchivoProducto()
-{
-    strcpy(_nombreArchivo,"ArchivoProducto.dat");
+///CONSTRUCTORES
+ArchivoProducto::ArchivoProducto(){
+   strcpy(_nombreArchivo,"ArchivoProducto.dat");
 }
-ArchivoProducto::ArchivoProducto(const char *nombreArchivo)
-{
+ArchivoProducto::ArchivoProducto(const char *nombreArchivo){
     strcpy(_nombreArchivo,nombreArchivo);
 }
+ArchivoProducto::ArchivoProducto(bool backUp) {
+    strcpy(_nombreArchivo,"ArchivoProductoBackUp.dat");
+}
 
-bool ArchivoProducto::Guardar(const Producto& producto)
-{
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "ab");
-    if(pArchivo == nullptr)
-    {
+///GUARDAR
+bool ArchivoProducto::Guardar(Producto producto){
+    FILE *pArchivo = fopen(_nombreArchivo, "ab");
+    if(pArchivo == NULL){
         return false;
     }
     bool ok = fwrite(&producto, sizeof(Producto), 1, pArchivo);
@@ -23,11 +25,9 @@ bool ArchivoProducto::Guardar(const Producto& producto)
     return ok;
 }
 
-bool ArchivoProducto::ModificarRegistro(const Producto& producto, int posicion)
-{
+bool ArchivoProducto::Guardar(Producto producto, int posicion){
     FILE *pArchivo = fopen(_nombreArchivo, "rb+");
-    if(pArchivo == nullptr)
-    {
+    if(pArchivo == NULL){
         return false;
     }
     fseek(pArchivo, sizeof(Producto) * posicion, SEEK_SET);
@@ -35,54 +35,16 @@ bool ArchivoProducto::ModificarRegistro(const Producto& producto, int posicion)
     fclose(pArchivo);
     return ok;
 }
-bool ArchivoProducto::BajaRegistro()
-{
-    int IDProducto;
-    Producto producto;
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb+");
-    if(pArchivo == nullptr)
-    {
-        return false;
-    }
-    cout<<"Ingrese el número de ID del producto: ";
-    cin>>IDProducto;
-    int pos=Buscar(IDProducto);
-    if(pos==-1)
-    {
-        cout<<"No hay Producto con esa ID.";
-        fclose(pArchivo);
-        return false;
-    }
-    producto=Leer(pos);
-    producto.setEstado(false);
-    bool resultado=ModificarRegistro(producto,pos);
-    fclose(pArchivo);
-    if(resultado)
-    {
-        cout<<"El producto fue dado de Baja";
-    }
-    else
-    {
-        cout << "Error al modificar el registro del Producto." << endl;
-    }
-    return resultado;
-}
-
-int ArchivoProducto::Buscar(int IDProducto)
-{
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr)
-    {
+///BUSCAR (ME DEVUELVE LA POS DEL PRODUCTO EN EL ARCH INGRESANDO EL ID)
+int ArchivoProducto::Buscar(int IDProducto){
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL){
         return -1;
     }
     Producto producto;
     int i = 0;
-    while(fread(&producto, sizeof(Producto), 1, pArchivo))
-    {
-        if(producto.getIdProducto() == IDProducto)
-        {
+    while(fread(&producto, sizeof(Producto), 1, pArchivo)){
+        if(producto.getIdProducto() == IDProducto){
             fclose(pArchivo);
             return i;
         }
@@ -91,13 +53,10 @@ int ArchivoProducto::Buscar(int IDProducto)
     fclose(pArchivo);
     return -1;
 }
-
-Producto ArchivoProducto::Leer(int posicion)
-{
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr)
-    {
+///LEER
+Producto ArchivoProducto::Leer(int posicion){
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL){
         return Producto();
     }
     Producto producto;
@@ -106,13 +65,10 @@ Producto ArchivoProducto::Leer(int posicion)
     fclose(pArchivo);
     return producto;
 }
-
-int ArchivoProducto::CantidadRegistros()
-{
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr)
-    {
+///CONTAR REGISTROS
+int ArchivoProducto::CantidadRegistros(){
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL){
         return 0;
     }
     fseek(pArchivo, 0, SEEK_END);
@@ -121,24 +77,74 @@ int ArchivoProducto::CantidadRegistros()
     return cantidadRegistros;
 }
 
-void ArchivoProducto::Leer(int cantidadRegistros, Producto *vector)
-{
+///LISTADO
+void ArchivoProducto::Listar(){
+    ArchivoProducto archivo("ArchivoProducto.dat");
+    Producto producto;
+    int contador=0;
+    int i, cantidadRegistros = archivo.CantidadRegistros();
+    system("pause");
+    for(i = 0; i < cantidadRegistros; i++){
+        producto = archivo.Leer(i);
+        if(producto.getEstado()){///SI EL ESTADO ES TRUE, LO MUESTRA
+        cout<<"-------------------------------------------"<<endl;
+        producto.mostrarProducto();
+        contador++;
+        }
+    }
+    cout<<"-------------------------------------------"<<endl;
+    cout<<"Cantidad de registros TOTAL: "<<cantidadRegistros<<endl;
+    cout<<"Cantidad de registros ACTIVOS: "<<contador<<endl;
+    cout<<"Cantidad de registros DADOS DE BAJA: "<<(cantidadRegistros-contador)<<endl;
+    cout<<"-------------------------------------------"<<endl;
+    system("pause");
+}
+///MODIFICAR REGISTRO
+bool ArchivoProducto::ModificarRegistro(const Producto& producto, int posicion) {
     FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr)
-    {
-        return;
+    pArchivo = fopen(_nombreArchivo, "rb+");
+    if(pArchivo == nullptr) {
+        fclose(pArchivo);
+        return false;
     }
-    for(int i = 0; i < cantidadRegistros; i++)
-    {
-        fread(&vector[i], sizeof(Producto), 1, pArchivo);
-    }
+    fseek(pArchivo, sizeof(Producto) * posicion, SEEK_SET);
+    bool ok = fwrite(&producto, sizeof(Producto), 1, pArchivo);
     fclose(pArchivo);
+    return ok;
 }
+////back up
+bool ArchivoProducto::BackUp() {
+    FILE *pArchivo = nullptr;
+    FILE *pArchivoBackUp = nullptr;
 
+    // Abrir archivo principal en modo lectura
+    pArchivo = fopen(_nombreArchivo, "rb");
+    if (pArchivo == nullptr) {
+        cout << "Error al abrir el archivo principal." << endl;
+        return false;
+    }
 
+    // Abrir archivo de respaldo en modo escritura (crea el archivo si no existe)
+    pArchivoBackUp = fopen("ArchivoproductoBackUp.dat", "wb");
+    if (pArchivoBackUp == nullptr) {
+        cout << "Error al crear el archivo de respaldo." << endl;
+        fclose(pArchivo);
+        return false;
+    }
 
-ArchivoProducto::~ArchivoProducto()
-{
-    //dtor
+    Producto producto;
+    // Leer registros y respaldar aquellos con estado activo
+    while (fread(&producto, sizeof(Producto), 1, pArchivo) == 1) {
+        if (producto.getEstado()) {  // Verificar si el producto está activo
+            fwrite(&producto, sizeof(Producto), 1, pArchivoBackUp);
+        }
+    }
+
+    fclose(pArchivo);
+    fclose(pArchivoBackUp);
+
+    cout << "Backup completado con éxito." << endl;
+    return true;
 }
+///DESTRUCTOR
+ArchivoProducto::~ArchivoProducto(){}

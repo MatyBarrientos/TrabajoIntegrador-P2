@@ -1,4 +1,5 @@
 #include "Producto.h"
+#include "ArchivoProducto.h"
 #include "Funciones.h"
 #include <cstring>
 #include <iostream>
@@ -22,15 +23,20 @@ Producto::Producto(int idArt, const char* detalle, int idMarca, int idCat, float
     _estado=estado;
 }
 ///CARGAR Y MOSTRAR
-void Producto::cargarProducto(){
+void Producto::cargarProducto(int nuevoID){
+    _IdProducto=nuevoID;
+    cout<<endl;
     cout<<"Ingresar: "<<endl;
-    cout<<"ID del producto: ";
-    cin>>_IdProducto;
+    cout<<"ID del producto: "<<_IdProducto<<endl;
     cout<<"Detalle del producto: ";
     cargarCadena(_detalle,49);
-    cout<<"ID de la marca: ";
+    cout<<"ID de la marca: "<<endl;
+    cout<<"1-PEDIGREE. / "<<"2-PROPLAN. / "<<"3-RAZA."<<endl;
+    cout<<"4-ROYAL CANIN. / "<<"5-WHISKAS. /"<<"6-KONGO."<<endl;
     cin>>_IdMarca;
-    cout<<"ID de la categoria: ";
+    cout<<"ID de la categoria: "<<endl;
+    cout<<"1-ALIMENTO PARA PERROS. / "<<"2-ALIMENTO PARA GATOS."<<endl;
+    cout<<"3-PRODUCTOS DE LIMPIEZA. / "<<"4-ALIMENTOS. /"<<endl;
     cin>>_Idcategoria;
     cout<<"Precio: $";
     cin>>_precio;
@@ -39,7 +45,6 @@ void Producto::cargarProducto(){
     _estado=true;
 }
 void Producto::mostrarProducto (){
-    cout<<"*******************************************"<<endl;
     cout<<"ID del articulo: "<<_IdProducto<<endl;
     cout<<"Detalle del producto: "<<_detalle<<endl;
     cout<<"ID de marca: "<<_IdMarca<<endl;
@@ -47,7 +52,45 @@ void Producto::mostrarProducto (){
     cout<<"Precio: $"<<_precio<<endl;
     cout<<"stock: "<<_stock<<endl;
     cout<<"Estado: "<<_estado<<endl;
+
 }
+void Producto::modificarProducto(){ ///(OPC 5)
+    cout<<endl;
+    cout<<"Modificar: "<<endl;
+    cout<<"ID del producto: "<<_IdProducto<<endl;
+    cout<<"Detalle del producto: ";
+    cargarCadena(_detalle,49);
+    cout<<"ID de la marca: "<<endl;
+    cout<<"1-PEDIGREE. / "<<"2-PROPLAN. / "<<"3-RAZA."<<endl;
+    cout<<"4-ROYAL CANIN. / "<<"5-WHISKAS. /"<<"6-KONGO."<<endl;
+    cin>>_IdMarca;
+    cout<<"ID de la categoria: "<<endl;
+    cout<<"1-ALIMENTO PARA PERROS. / "<<"2-ALIMENTO PARA GATOS."<<endl;
+    cout<<"3-PRODUCTOS DE LIMPIEZA. / "<<"4-ALIMENTOS. /"<<endl;
+    cin>>_Idcategoria;
+    cout<<"Precio: $";
+    cin>>_precio;
+    cout<<"Stock: ";
+    cin>>_stock;
+}
+///Fue el original, se re utilizó para ventas IDVendedores.
+int Producto::proxIDproducto (){ ///RECIBE EL ARCHIVO PRODUCTO
+    ArchivoProducto archivoP;
+    int pos, nuevoID;
+    pos=archivoP.CantidadRegistros(); ///OBTENEMOS CUANTO REGISTROS TIENE EL ARCHIVO
+    if(pos==0){/// PREGUNTAMOS SI NO HAY REGISTROS EN EL ARCHIVO
+        cout<<"Ingresar el primer ID de productos: ";
+        cin>>nuevoID;
+        return nuevoID; ///RETORNAMOS EL 1ER ID INGRESADO POR TECLADO
+    }else{
+        Producto aux; ///OBJ PRODUCTO AUXILIAR
+        aux=archivoP.Leer(pos-1); /// OBTENEMOS EL ULTIMO REGISTRO
+        nuevoID=aux.getIdProducto(); /// OBTENEMOS EL ULTIMO ID UTILIZADO
+        nuevoID++; ///LO INCREMENTAMOS
+        return nuevoID; ///RETORNAMOS EL SIGUIENTE ID
+    }
+}
+
 ///SETTERS
 void Producto::setIdProducto(int idProducto){_IdProducto=idProducto;}
 void Producto::setDetalle(const char* descripcion){strcpy(_detalle,descripcion);}

@@ -11,7 +11,9 @@ ArchivoVendedor::ArchivoVendedor() {
 ArchivoVendedor::ArchivoVendedor(const char* nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
 }
-
+ArchivoVendedor::ArchivoVendedor(bool backUp) {
+    strcpy(_nombreArchivo,"ArchivoVendedorBackUp.dat");
+}
 bool ArchivoVendedor::Guardar(const Vendedor& vendedor) {
 
     FILE *pArchivo=nullptr;
@@ -235,17 +237,6 @@ int ArchivoVendedor::CantidadRegistros() {
     return cantidadRegistros;
 }
 
-void ArchivoVendedor::Leer(int cantidadRegistros, Vendedor *vector) {
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr) {
-        return;
-    }
-    for(int i = 0; i < cantidadRegistros; i++) {
-        fread(&vector[i], sizeof(Vendedor), 1, pArchivo);
-    }
-    fclose(pArchivo);
-}
 void ArchivoVendedor::Listar() {
     int cantidadRegistros=CantidadRegistros();
     FILE *pArchivo=nullptr;

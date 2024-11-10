@@ -8,6 +8,7 @@ private:
 
 public:
     ArchivoCliente();
+    ArchivoCliente(const char *nombreArchivo);
     ArchivoCliente(bool backUp);
     bool Guardar(const Cliente& cliente);
     bool ModificarRegistro(const Cliente& cliente, int posicion);
@@ -17,7 +18,6 @@ public:
     int Buscar(int IDCliente);
     Cliente Leer(int posicion);
     int CantidadRegistros();
-    void Leer(int cantidadRegistros, Cliente *vector);
     void Listar();
     bool BackUp();
     bool modificarNombreCliente(Cliente& cliente,int pos);
