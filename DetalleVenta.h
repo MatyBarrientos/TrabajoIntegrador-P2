@@ -33,6 +33,8 @@ public:
     ///SOBRECARGA DE OPERADORES
     void operator = (DetalleVenta aux);
 
+    float calcularSubTotal();
+
 
 protected:
 

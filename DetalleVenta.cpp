@@ -15,7 +15,7 @@ void DetalleVenta::cargar(){
     cout<<"ID de Factura (int): ";
     cin>>_IdFactura;
     cout<<"ID del producto: ";
-    cin>>_IdProducto;
+    //cin>>l;
     cout<<"Cantidad: ";
     cin>>_cantidad;
     cout<<"Precio Unitario: $";

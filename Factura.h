@@ -8,7 +8,8 @@ private:
     char _tipoFactura;
     int _IdCliente;
     int _IdVendedor;
-    DetalleVenta _detalle;
+    DetalleVenta* _detalle;
+    int _cantidadDetalles; //es para el vector dinámico
     float _total;
     int _metodoPago;
     Fecha _fechaVenta;
@@ -38,15 +39,18 @@ public:
     char getTipoFactura();
     int  getIdCliente();
     int  getIdVendedor();
-    DetalleVenta getDetalleVenta();
+    int getCantidadDetalle();
     float getTotal();
     bool  getEstado();
     int  getMetodoPago();
     Fecha getFechaCompra();
+
+    ///
+    float calcularTotal();
+    void agregarDetalle(const DetalleVenta& detalle);
 
 
 
 protected:
 
 };
-

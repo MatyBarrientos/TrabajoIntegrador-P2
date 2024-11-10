@@ -45,17 +45,7 @@ bool MenuCliente::cambiarEstadoCliente() {
     ArchivoCliente archivoCliente;
     return archivoCliente.CambiarEstadoRegistro();
 }
-/*
-////sin uso
-Cliente MenuCliente::modificarCliente(int DNI, int posicion) {
-    ArchivoCliente archivoCliente;
-    Cliente cliente = archivoCliente.Leer(posicion);
 
-    archivoCliente.modificarNombreCliente(cliente, posicion);
-    return cliente;
-}
-///no es necesario
-*/
 ///////////////////////
 //Sub Opcion 1
 void MenuCliente::OpcionUno() {
@@ -69,18 +59,6 @@ void MenuCliente::OpcionUno() {
     system("pause");
     system("cls");
 }
-/*void MenuCliente::OpcionDos() {
-    system("cls");
-    cout << "Baja Cliente." << endl;
-    bajaCliente();
-    fflush(stdin);
-}
-void MenuCliente::OpcionTres() {
-    system("cls");
-    cout << "Alta Cliente." << endl;
-    altaCliente();
-    fflush(stdin);
-}*/
 
 void MenuCliente::OpcionDos() {
     system("cls");
@@ -171,9 +149,11 @@ void  MenuCliente::OpcionCuatro() {
 }
 
 void MenuCliente::OpcionCinco() {
+    system("cls");
     cout << "Listar Clientes." << endl;
     ArchivoCliente archivoCliente;
     archivoCliente.Listar();
+    system("pause");
 }
 
 

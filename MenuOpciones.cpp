@@ -35,7 +35,6 @@ void MenuOpciones::opcion() {
                 break;
             case 3:
                 opcionSubMenuTres();
-
                 break;
             case 4:
                 ms.mostrarSubMenuCuatro();
