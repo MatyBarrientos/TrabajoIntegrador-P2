@@ -13,7 +13,7 @@ private:
     float _total;
     int _metodoPago;
     Fecha _fechaVenta;
-    bool _estado;
+    bool _estado;_
 public:
     ///CONSTRUCOR Y DESTRUCTOR
     Factura();

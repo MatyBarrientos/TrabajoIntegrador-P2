@@ -37,7 +37,7 @@ void MenuOpciones::opcion() {
                 opcionSubMenuTres();
                 break;
             case 4:
-                ms.mostrarSubMenuCuatro();
+                opcionSubMenuCuatro();
                 break;
             case 5:
                 ms.mostrarSubMenuCinco();
@@ -65,7 +65,6 @@ void MenuOpciones::opcion() {
                 break;
             case 3:
                 opcionSubMenuTres();
-
                 break;
             case 4:
                 ms.mostrarSubMenuCuatro();
@@ -203,6 +202,7 @@ void MenuOpciones::opcionSubMenuDos() {
 
             default:
                 cout << "Ingrese una opcion correcta." << endl;
+
                 system("pause");
                 break;
             }
@@ -222,23 +222,24 @@ void MenuOpciones::opcionSubMenuTres() {
         if(auth.nivelAcceso()) {
             switch(opc) {
             case 1:
-                mCliente.OpcionUno();
+                cout << "Productos 1." << endl;
+                system("pause");
                 break;
             case 2:
-                mCliente.OpcionDos();
+                cout << "Productos 2." << endl;
+                system("pause");
                 break;
             case 3:
-                mCliente.OpcionTres();
+                cout << "Productos 3." << endl;
+                system("pause");
                 break;
             case 4:
-                mCliente.OpcionCuatro();
+                cout << "Productos 4." << endl;
+                system("pause");
                 break;
             case 5:
-
-                mCliente.OpcionCinco();
-
+                cout << "Productos 5." << endl;
                 system("pause");
-
                 break;
 
             case 0:
@@ -256,10 +257,12 @@ void MenuOpciones::opcionSubMenuTres() {
         } else {
             switch(opc) {
             case 1:
-                mCliente.OpcionTres();
+                cout << "Buscar Producto." << endl;
+                system("pause");
                 break;
             case 2:
-                mCliente.OpcionCinco();
+                cout << "." << endl;
+                system("pause");
                 break;
             case 0:
                 cout << "Saliendo al menu principal..." << endl;
@@ -275,6 +278,81 @@ void MenuOpciones::opcionSubMenuTres() {
         }
     }
 }
+
+void MenuOpciones::opcionSubMenuCuatro() {
+    int opc = -1;
+    MenuSalida ms;
+    MenuCliente mCliente;
+    while(opc != 0) {
+        ms.mostrarSubMenuCuatro();
+        cin >> opc;
+        switch(opc) {
+        case 1:
+            cout << "Realizar Venta." << endl;
+            system("pause");
+            break;
+        case 2:
+            cout << "Buscar Venta." << endl;
+            system("pause");
+            break;
+        case 3:
+            cout << "Mostrar listado Venta." << endl;
+            system("pause");
+            break;
+        case 0:
+            cout << "Saliendo al menu principal..." << endl;
+            system("pause");
+            break;
+
+        default:
+            cout << "Ingrese una opcion correcta." << endl;
+            system("pause");
+            break;
+        }
+        system("cls");
+    }
+}
+
+void MenuOpciones::opcionSubMenuCinco() {
+    int opc = -1;
+    MenuSalida ms;
+    MenuCliente mCliente;
+    while(opc != 0) {
+        ms.mostrarSubMenuCuatro();
+        cin >> opc;
+        switch(opc) {
+        case 1:
+            cout << "Respaldo Cliente." << endl;
+            system("pause");
+            break;
+        case 2:
+            cout << "Respaldo Ventas." << endl;
+            system("pause");
+            break;
+        case 3:
+            cout << "Respaldo Productos." << endl;
+            system("pause");
+            break;
+        case 4:
+            cout << "Respaldo Ventas." << endl;
+            system("pause");
+            break;
+        case 0:
+            cout << "Saliendo al menu principal..." << endl;
+            system("pause");
+            break;
+        default:
+            cout << "Ingrese una opcion correcta." << endl;
+            system("pause");
+            break;
+        }
+        system("cls");
+    }
+}
+
+
+
+
 
 MenuOpciones::~MenuOpciones() {
     //dtor
