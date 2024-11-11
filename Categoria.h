@@ -1,8 +1,7 @@
 #pragma once
 
 
-class Categoria
-{
+class Categoria {
 
 private:
     char _nombre[20];
@@ -18,18 +17,20 @@ public:
     void cargar();
 
     //getters
-    char* getNombreCategoria();
-    int getIdCategoria();
-    char* getDescripcionCategoria();
-    bool getEstadoCategoria();
+    char* getNombre();
+    int getID();
+    char* getDescripcion();
+    bool getEstado();
 
 
     //setters
 
-    void setNombreCat(const char* nombreCat);
-    void setIdCat(int idCategoria);
-    void setDescripcionCat(const char* descripcionCat);
-    void setEstadoCat(bool estadoCat);
+    void setNombre(const char* nombreCat);
+    void setDescripcion(const char* descripcionCat);
+    void setEstado(bool estadoCat);
+
+     int proxID();
+     void setGenerico();
 
     virtual ~Categoria();
 protected:

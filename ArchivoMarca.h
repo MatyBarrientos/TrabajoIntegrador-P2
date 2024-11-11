@@ -2,9 +2,8 @@
 #include "Marca.h"
 
 
-class ArchivoMarca
-{
-    public:
+class ArchivoMarca {
+public:
     ArchivoMarca();
     ArchivoMarca(const char *nombreArchivo);
     ArchivoMarca(bool backUp);
@@ -18,11 +17,17 @@ class ArchivoMarca
     int CantidadRegistros();
     void Listar();
     bool BackUp();
+
+    int CargaMarcaID();
+    void mostrarCargaMarca();
+    int ingresoMarca();
+    void mostrarMarcas();
+    void mostrarMarcasPorCategoria(int idCategoria);
     virtual ~ArchivoMarca();
 
-    protected:
+protected:
 
-    private:
-        char _nombreArchivo[50];
+private:
+    char _nombreArchivo[50];
 };
 

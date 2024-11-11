@@ -29,7 +29,9 @@ public:
     void setPaisOrigen(const char* nombrePais);
     void setEstado(bool estado);
 
-    int proxIDproducto ();
+    int proxID();
+    int CargaMarcaID();
+    void mostrarCargaMarca();
 
 
 

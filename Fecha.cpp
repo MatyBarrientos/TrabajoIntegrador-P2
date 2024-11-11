@@ -63,10 +63,13 @@ void Fecha::cargarFecha()
 {
     cout<<"Ingrese dia: ";
     cin>>_dia;
+    fflush(stdin);
     cout<<"Ingrese mes: ";
     cin>>_mes;
+    fflush(stdin);
     cout<<"Ingrese anio: ";
     cin>>_anio;
+    fflush(stdin);
 }
 
 ///Funciones de ayuda

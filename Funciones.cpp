@@ -2,6 +2,7 @@
 #include "Cliente.h"
 #include "Vendedor.h"
 #include "Producto.h"
+#include <limits>
 
 
 #include <iostream>

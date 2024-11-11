@@ -237,6 +237,9 @@ void MenuOpciones::opcionSubMenuTres() {
             case 5:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
                 mProducto.listarProducto();
                 break;
+            case 6:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
+                mProducto.filtroVenta();
+                break;
             case 0:
                 cout << "Saliendo al menu principal..." << endl;
                 system("pause");

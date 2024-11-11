@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include "Funciones.h"
+#include <limits>
 using namespace std;
 
 Cliente::Cliente() {}
@@ -29,20 +30,26 @@ void Cliente::cargar()
     Persona::cargar();
     cout<<"Telefono: ";
     cin>>_telefono;
+    fflush(stdin);
     cout<<"Correo electronico: ";
     cin>>_Email;
+    fflush(stdin);
     cout<<"Domicilio: ";
     cin>>_Direccion;
+    fflush(stdin);
 }
 void Cliente::cargar(int dni)
 {
     Persona::cargar(dni);
     cout<<"Telefono: ";
     cin>>_telefono;
+    fflush(stdin);
     cout<<"Correo electronico: ";
     cin>>_Email;
+    fflush(stdin);
     cout<<"Domicilio: ";
     cin>>_Direccion;
+    fflush(stdin);
 }
 
 //getters
@@ -122,7 +129,6 @@ void Cliente::modificarApellido()
     cout<<"Ingrese el nuevo Apellido:";
     cargarCadena(aux,49);
     Persona::setApellido(aux);
-
     cout<<"Cambios realizados"<<endl;
 }
 

@@ -14,6 +14,9 @@ class MenuProducto{
         void buscarProducto();        ///(OPC 3)
         void modificarProducto();     ///(OPC 4)
         void listarProducto();        ///(OPC 5)
+
+
+        void filtroVenta();
         ///DESTRUCTOR
         virtual ~MenuProducto();
 };

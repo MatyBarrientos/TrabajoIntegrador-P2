@@ -49,6 +49,8 @@ class Producto
 
     /////
     int proxIDproducto ();
+    void mostrarProductoVenta(int IDMarca, int IDCategoria);
+
 
     ///DESTRUCTOR
     virtual ~Producto();

@@ -1,16 +1,15 @@
 #include "ArchivoMarca.h"
 #include "Funciones.h"
 #include <cstring>
+#include <limits>
 
-ArchivoMarca::ArchivoMarca()
-{
-    strcpy(_nombreArchivo,"ArchivoCliente.dat");
+ArchivoMarca::ArchivoMarca() {
+    strcpy(_nombreArchivo,"ArchivoMarca.dat");
 }
 ArchivoMarca::ArchivoMarca(const char *nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
 }
-ArchivoMarca::~ArchivoMarca()
-{
+ArchivoMarca::~ArchivoMarca() {
     strcpy(_nombreArchivo,"ArchivoMarcaBackUp.dat");
 }
 bool ArchivoMarca::Guardar(const Marca& marca) {
@@ -80,6 +79,7 @@ bool ArchivoMarca::CambiarEstadoRegistro() {
     }
     cout<<"Ingrese el número de ID de la Marca: ";
     cin>>IDMarca;
+    fflush(stdin);
     int pos=Buscar(IDMarca);
     if(pos==-1||pos==-2) {
         cout<<"No hay Marca con esa ID."<<endl;
@@ -92,6 +92,7 @@ bool ArchivoMarca::CambiarEstadoRegistro() {
         cout<<"La Marca está dada de alta."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             marca.setEstado(false);
             cout<<"Estado cambiado a Baja."<<endl;
@@ -103,6 +104,7 @@ bool ArchivoMarca::CambiarEstadoRegistro() {
         cout<<"La Marca está dado de Baja."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             marca.setEstado(true);
             cout<<"Estado cambiado a Alta."<<endl;
@@ -176,3 +178,99 @@ void ArchivoMarca::Listar() {
     }
     fclose(pArchivo);
 }
+
+void ArchivoMarca::mostrarCargaMarca() {
+    int contador = 0, ID, cantidad;
+    char nombre[20];
+    Marca marca;
+
+    cantidad = CantidadRegistros();
+    if (cantidad == 0) {
+        cout << "No hay marcas aún ingresadas" << endl;
+        return;
+    }
+    for (int i = 0; i < cantidad; i++) {
+        marca = Leer(i);
+        if (marca.getEstado()) {
+            ID = marca.getIdMarca();
+            strcpy(nombre, marca.getNombre());
+            if (contador > 0) cout << " || ";
+            cout << "ID " << ID << " -> " << nombre;
+            contador++;
+        }
+    }
+    cout << endl;
+}
+int ArchivoMarca::CargaMarcaID() {
+    int opc, cantidad;
+    Marca marca;
+
+    cantidad = CantidadRegistros();
+
+    if (cantidad == 0) {
+        cout << "Desea ingresar una nueva Categoria o seleccionar una ID existente? (1-SI || 2-NO): ";
+        cin >> opc;
+        fflush(stdin);
+        if (opc == 1) {
+            marca.cargar();
+            this->Guardar(marca);
+            return marca.getIdMarca();
+        } else {
+            ingresoMarca();
+        }
+    } else {
+        return ingresoMarca();
+    }
+    return -1; // En caso de que no se encuentre o el usuario salga.
+}
+///(M.B)
+int ArchivoMarca::ingresoMarca() {
+    int ID, opc;
+    Marca marca;
+
+    while (true) {
+        cout << "Ingrese el ID de la Marca: ";
+        cin >> ID;
+        fflush(stdin);
+        int pos = Buscar(ID);
+
+        if (pos != -1 && pos != -2) {
+            return ID;
+        } else {
+            cout << "ID no encontrado. ¿Desea registrar una nueva Marca en su lugar? (1-SI || 0-NO): ";
+            cin >> opc;
+            fflush(stdin);
+            if (opc == 1) {
+                marca.cargar();
+                this->Guardar(marca);
+                return marca.getIdMarca();
+            } else if (opc == 0) {
+                return -1;  // valor que indique que el usuario no desea registrar una nueva categoría.
+            } else {
+                cout << "Opción no válida. Por favor, ingrese 1 para registrar o 0 para salir." << endl;
+            }
+        }
+    }
+}
+
+void ArchivoMarca::mostrarMarcas() {
+    char nombre[20];
+    int ID,contador=0,cantidad = CantidadRegistros();
+    Marca marca;
+    if (cantidad == 0) {
+        cout << "No hay marcas aún ingresadas" << endl;
+        return;
+    }
+    for (int i = 0; i < cantidad; i++) {
+        marca = Leer(i);
+        if (marca.getEstado()) {
+            ID = marca.getIdMarca();
+            strcpy(nombre, marca.getNombre());
+            if (contador > 0) cout << " || ";
+            cout << "ID " << ID << " -> " << nombre;
+            contador++;
+        }
+    }
+}
+
+

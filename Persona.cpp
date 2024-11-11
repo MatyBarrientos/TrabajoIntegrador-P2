@@ -3,6 +3,7 @@
 using namespace std;
 #include "Persona.h"
 #include "Funciones.h"
+#include <limits>
 
 
 
@@ -33,6 +34,7 @@ void Persona::cargar()
     cargarCadena(_apellido,49);
     cout<<"DNI: ";
     cin>> _DNI;
+    fflush(stdin);
     cout<<"Fecha de nacimiento: "<<endl;
     _fechaNacimiento.cargarFecha();
     //cout<<endl;

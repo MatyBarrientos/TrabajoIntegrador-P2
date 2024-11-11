@@ -40,6 +40,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArchivoCategoria.cpp" />
+		<Unit filename="ArchivoCategoria.h" />
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
 		<Unit filename="ArchivoMarca.cpp" />

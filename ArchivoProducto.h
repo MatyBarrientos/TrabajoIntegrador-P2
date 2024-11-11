@@ -20,6 +20,11 @@ public:
     bool Guardar(Producto producto, int posicion);
     ///BUSCAR
     int Buscar(int IDProducto);
+
+    int BuscarCategoria(int IDCategoria);
+    int BuscarMarca(int IDMarca);
+void mostrarMarcasPorCategoria(int idCategoria);
+    void mostrarProductosPorMarcaYCategoria(int idCategoria, int idMarca);
     ///LEER
     Producto Leer(int posicion);
     ///CONTAR REGISTROS
