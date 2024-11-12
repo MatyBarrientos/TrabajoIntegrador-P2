@@ -43,7 +43,7 @@ void Factura::mostrar() {
     cout<<"ID de cliente: "<<_IdCliente<<endl;
     cout<<"ID de vendedor: "<<_IdVendedor<<endl;
     cout<<"Detalle de la venta: "<<endl;
-    ///_detalle.mostrar();
+    ///_detalle.mostrar(); tiene que se un obj de detalleventa?
     cout<<"Total de la compra: "<<_total<<endl;
     cout<<"Metodo de pago (1,2 o 3): "<<_metodoPago<<endl;
     cout<<"Fecha: "<<endl;

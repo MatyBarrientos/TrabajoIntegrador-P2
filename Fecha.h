@@ -1,4 +1,8 @@
 #pragma once
+#include <sstream>
+#include <string>
+#include <iostream>
+using namespace std;
 
 class Fecha
 {
@@ -30,6 +34,8 @@ class Fecha
         ///
         void AgregarDia();
         void RestarDia();
+
+        string getFechaCompleta();
 
 
         virtual ~Fecha();

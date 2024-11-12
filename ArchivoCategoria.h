@@ -5,8 +5,8 @@
 class ArchivoCategoria
 {
     public:
-        ArchivoCategoria();
-            ArchivoCategoria(const char *nombreArchivo);
+    ArchivoCategoria();
+    ArchivoCategoria(const char *nombreArchivo);
     ArchivoCategoria(bool backUp);
     bool Guardar(const Categoria& categoria);
     bool ModificarRegistro(const Categoria& categoria, int posicion);

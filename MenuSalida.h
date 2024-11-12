@@ -18,7 +18,7 @@ public:
     void mostrarSubMenuCuatro();
     void mostrarSubMenuCinco();
     /// Opciones de los Menu
-
+    void SubMenuListadoProducto();
 
 
     /////////////////////////////////

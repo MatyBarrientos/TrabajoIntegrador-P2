@@ -1,0 +1,49 @@
+ID Producto,Detalle,Marca,Categoria,precio,stock
+1,Performance Adulto 20kg,Royal Canin,Alimento Balanceado,$ 65350,unidades: 22
+2,Performance Cat Adulto 7.5kg,Royal Canin,Alimento Balanceado,$ 42510,unidades: 13
+3,Fit Cat 20kg,Purina,Alimento Balanceado,$ 125200,unidades: 10
+4,Raza Gato Pescado 15kg,Raza,Alimento Balanceado,$ 30280,unidades: 25
+5,Raza Perro Carne 21kg,Raza,Alimento Balanceado,$ 27780,unidades: 12
+6,Pro Plan Adulto Mediano 15kg,Purina,Alimento Balanceado,$ 76020,unidades: 19
+7,Pro Plan Adulto Small 7,5kg,Purina,Alimento Balanceado,$ 48100,unidades: 22
+8,Excellent Adulto M/G 20kg,Purina,Alimento Balanceado,$ 57780,unidades: 44
+9,Excellent Cat Adulto 7,5kg,Purina,Alimento Balanceado,$ 43740,unidades: 56
+10,Pedigree Adulto C/P/C 21Kg,Pedigree,Alimento Balanceado,$ 47240,unidades: 16
+11,Whiskas Carne Adulto 10Kg,Whiskas,Alimento Balanceado,$ 35420,unidades: 38
+12,Agility Dog Adulto 20Kg,Agility,Alimento Balanceado,$ 38650,unidades: 50
+13,Maxxium Dog Adulto 20Kg,Maxxium,Alimento Balanceado,$ 45820,unidades: 32
+14,Sieger Criadores 20kg,Sieger,Alimento Balanceado,$ 56150,unidades: 31
+15,Old Prince Cordero Novel 15Kg,Old Prince,Alimento Balanceado,$ 52210,unidades: 62
+16,Sabrositos Gato Adulto 20Kg,Sabrositos,Alimento Balanceado,$ 38130,unidades: 46
+17,Sabrositos Perro Adulto 22Kg,Sabrositos,Alimento Balanceado,$ 26720,unidades: 53
+18,Kongo Tradicional 21Kg,Kongo,Alimento Balanceado,$ 30940,unidades: 6
+19,Eukanuba Adulto Small 15Kg,Eukanuba,Alimento Balanceado,$ 54050,unidades: 52
+20,Procenex Original 1.8Lt,Procenex,Articulos de Limpieza,$ 3780,unidades: 8
+21,Procenex Vidrios 420ml,Procenex,Articulos de Limpieza,$ 1300,unidades: 12
+22,Odex Detergente 500ml,Odex,Articulos de Limpieza,$ 1900,unidades: 21
+23,Odex Lavandina 2lt,Odex,Articulos de Limpieza,$ 2150,unidades: 16
+24,Odex Limpiador Floral 4lt,Odex,Articulos de Limpieza,$ 6490,unidades: 8
+25,Magistral Detergente 300ml,Magistral,Articulos de Limpieza,$ 1850,unidades: 40
+26,Magistral Detergente 500ml,Magistral,Articulos de Limpieza,$ 2980,unidades: 37
+27,Ayudin Quitamanchas 700ml,Ayudin,Articulos de Limpieza,$ 3500,unidades: 23
+28,Ayudin Destapacanerias 1lt,Ayudin,Articulos de Limpieza,$ 3925,unidades: 12
+29,Ayudin Lavandina En Gel 700ml,Ayudin,Articulos de Limpieza,$ 3930,unidades: 25
+30,Cif Crema Bioactive 750g,Cif,Articulos de Limpieza,$ 2830,unidades: 45
+31,Cif Detergente Limon 300ml,Cif,Articulos de Limpieza,$ 1500,unidades: 43
+32,Cif Detergente Limon 500ml,Cif,Articulos de Limpieza,$ 2410,unidades: 40
+33,Cif Pisos Plastificados 450ml,Cif,Articulos de Limpieza,$ 3270,unidades: 12
+34,Elegante Papel Higienico 4x80mts,Elegante,Articulos de Limpieza,$ 3900,unidades: 200
+35,Elegante Rollo de Cocina 3x50 Panios,Elegante,Articulos de Limpieza,$ 1630,unidades: 240
+36,Elegante Rollo de Cocina 1x200 Panios,Elegante,Articulos de Limpieza,$ 1920,unidades: 135
+37,Mamboreta D 30ml,Mamboreta,Jardin,$ 6500,unidades: 6
+38,Mamboreta H 30ml,Mamboreta,Jardin,$ 6200,unidades: 7
+39,Hortal Liquido 250ml,Hortal,Jardin,$ 7680,unidades: 40
+40,Bertinat Triple 15 1kg,Bertinat,Jardin,$ 7130,unidades: 25
+41,Grhesa Harina de Hueso 1kg,Grhesa,Jardin,$ 5500,unidades: 0
+42,Grhesa Babosil Pellets 250g,Grhesa,Jardin,$ 4750,unidades: 1
+43,WonderCat Economica 4kg,WonderCat,Piedras de Gato,$ 2950,unidades: 342
+44,Gattini Aglomerante 4kg,Gattini,Piedras de Gato,$ 6100,unidades: 84
+45,Absorsol Premium 3,6kg,Absorsol,Piedras de Gato,$ 3260,unidades: 280
+46,Miel Artesanal 1kg,Artesanias,Productos Regionales,$ 6900,unidades: 62
+47,Kit Cuchillo de Gaucho Artesanal,Artesanias,Productos Regionales,$ 45590,unidades: 2
+48,Pastilla lavavajilla,Cif,Articulos de Limpieza,$ 6500,unidades: 12

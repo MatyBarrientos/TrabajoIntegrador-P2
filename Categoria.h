@@ -4,7 +4,7 @@
 class Categoria {
 
 private:
-    char _nombre[20];
+    char _nombre[50];
     int _IdCategoria;
     char _descripcion[50];
     bool _estado;

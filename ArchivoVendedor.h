@@ -1,4 +1,5 @@
 #include "Vendedor.h"
+#include <vector>
 #pragma once
 
 
@@ -24,6 +25,10 @@ public:
     void Listar();
     bool BackUp();
     bool modificarNombreCliente(Vendedor& vendedor,int pos);
+
+    vector<string> getEncabezados();
+    Vendedor* listarEnVectorD();
+
     virtual ~ArchivoVendedor();
 
 protected:

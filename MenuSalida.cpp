@@ -95,8 +95,16 @@ void MenuSalida::mostrarSubMenuDosTres() {
     cout << "0 - Volver al menú anterior "<<endl;
     cout << " Seleccione una opcion: ";
 }
-
-
+///MENU PRODUCTOS -> OPC 5 LISTADOS
+void MenuSalida::SubMenuListadoProducto(){
+    system("cls");
+    cout<<"***Listar Productos por:***"<<endl;
+    cout<<"1 - Estado ACTIVO " <<endl;
+    cout<<"2 - Estado BAJA " <<endl;
+    cout<<"3 - CATEGORIA y MARCA " <<endl;
+    cout<<"0 - Volver al menu anterior "<<endl;
+    cout<<" Seleccione una opcion: ";
+}
 
 
 

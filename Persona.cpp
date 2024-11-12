@@ -7,16 +7,14 @@ using namespace std;
 
 
 
-Persona::Persona()
-{
+Persona::Persona() {
     strcpy(_nombre,"Joe");
     strcpy(_apellido,"Doe");
     _DNI=0;
     _estado=true;
     //_fechaNacimiento;
 }
-Persona::Persona(const char* nombre,const char* apellido,int dni, Fecha nacimiento,bool estado=true)
-{
+Persona::Persona(const char* nombre,const char* apellido,int dni, Fecha nacimiento,bool estado=true) {
     strcpy(_nombre,nombre);
     strcpy(_apellido,apellido);
     _DNI=dni;
@@ -26,8 +24,7 @@ Persona::Persona(const char* nombre,const char* apellido,int dni, Fecha nacimien
     _fechaNacimiento.setAnio(nacimiento.getAnio());
 }
 
-void Persona::cargar()
-{
+void Persona::cargar() {
     cout<<"Nombre: ";
     cargarCadena(_nombre,49);
     cout<<"Apellido: ";
@@ -39,8 +36,7 @@ void Persona::cargar()
     _fechaNacimiento.cargarFecha();
     //cout<<endl;
 }
-void Persona::cargar(int dni)
-{
+void Persona::cargar(int dni) {
     setDni(dni);
     cout<<"Nombre: ";
     cargarCadena(_nombre,49);
@@ -50,8 +46,7 @@ void Persona::cargar(int dni)
     _fechaNacimiento.cargarFecha();
     //cout<<endl;
 }
-void Persona::mostrar()
-{
+void Persona::mostrar() {
     cout<<"Nombre: ";
     cout<< _nombre;
     cout<<endl;
@@ -68,26 +63,21 @@ void Persona::mostrar()
 
 
 ///Setters
-void Persona::setNombre(const char name[30])
-{
+void Persona::setNombre(const char name[30]) {
     strcpy(_nombre,name);
 }
-void Persona::setApellido(const char lastName[30])
-{
+void Persona::setApellido(const char lastName[30]) {
     strcpy(_apellido,lastName);
 }
-void Persona::setDni(int ID)
-{
+void Persona::setDni(int ID) {
     _DNI=ID;
 }
 
-void Persona::setEstado(bool estado)
-{
+void Persona::setEstado(bool estado) {
     _estado=estado;
 }
 
-void Persona::setFecha(int d,int m,int a)
-{
+void Persona::setFecha(int d,int m,int a) {
     _fechaNacimiento.setDia(d);
 
     _fechaNacimiento.setMes(m);
@@ -96,24 +86,22 @@ void Persona::setFecha(int d,int m,int a)
 }
 
 ///getters
-char* Persona::getNombre()
-{
+char* Persona::getNombre() {
     return _nombre;
 }
-char* Persona::getApellido()
-{
+char* Persona::getApellido() {
     return _apellido;
 }
-int Persona::getDNI()
-{
+int Persona::getDNI() {
     return _DNI;
 }
-Fecha Persona::getFecha()
-{
+Fecha Persona::getFecha() {
     return _fechaNacimiento;
 }
+string Persona::getFechaCompleta() {
+    return getFecha().getFechaCompleta();
+}
 
-bool Persona::getEstado()
-{
+bool Persona::getEstado() {
     return _estado;
 }

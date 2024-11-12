@@ -23,10 +23,10 @@ void Categoria::setNombre(const char* nombreCat) {
     strcpy(_nombre,nombreCat);
 }
 void Categoria::cargar() {
-
     _IdCategoria=proxID();
+    cout<<"ID de la Categoria: "<<_IdCategoria<<endl;
     cout<<"Nombre de la Categoria: ";
-    cargarCadena(_nombre,19);
+    cargarCadena(_nombre,49);
 }
 void Categoria::mostrar() {
     cout<<"ID de la Categoria: "<<_IdCategoria<<endl;

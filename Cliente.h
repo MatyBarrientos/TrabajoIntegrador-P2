@@ -36,6 +36,7 @@ public:
     int getIdCliente ();
     char* getEmail();
     bool getEstado ();
+    string getFecha();
 
     ///modificadores
 

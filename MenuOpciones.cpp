@@ -234,10 +234,34 @@ void MenuOpciones::opcionSubMenuTres() {
             case 4:///MODIFICAR PRODUCTO
                 mProducto.modificarProducto();
                 break;
-            case 5:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
-                mProducto.listarProducto();
+            case 5:{///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
+                int opc2=-1;
+                while(opc2!=0){
+                ms.SubMenuListadoProducto();
+                cin>>opc2;
+                    switch(opc2){
+                    case 1:
+                        mProducto.listarProductoActivo();
+                        break;
+                    case 2:
+                        mProducto.listarProductoBaja();
+                        break;
+                    case 3:
+                        mProducto.filtroVenta();
+                        break;
+                    case 0:
+                        cout << "Saliendo al menu anterior..." << endl;
+                        system("pause");
+                        break;
+                    default:
+                        cout << "Ingrese una opcion correcta." << endl;
+                        system("pause");
+                        break;
+                    }
+                }
+            }
                 break;
-            case 6:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
+            case 6:///OPCION OCULTA
                 mProducto.filtroVenta();
                 break;
             case 0:
@@ -256,7 +280,7 @@ void MenuOpciones::opcionSubMenuTres() {
                 mProducto.buscarProducto();
                 break;
             case 2:///LISTAR PRODUCTOS(MUESTRA CANTIDAD REGISTROS)
-                mProducto.listarProducto();
+                mProducto.listarProductoActivo();
                 break;
             case 0:
                 cout << "Saliendo al menu principal..." << endl;

@@ -42,13 +42,12 @@ void Producto::cargarProducto(int nuevoID) {
     cout<<"ID de la Marca: "<<_IdMarca<<endl;
     Acategoria.mostrarCargaCategoria();
     _Idcategoria=Acategoria.CargaCategoriaID();
-    cout<<"ID del producto: "<<_Idcategoria<<endl;
     cout<<"Precio: $";
     cin>>_precio;
     fflush(stdin);
     cout<<"Stock: ";
-    fflush(stdin);
     cin>>_stock;
+    fflush(stdin);
     _estado=true;
 }
 void Producto::mostrarProducto () {
@@ -63,18 +62,26 @@ void Producto::mostrarProducto () {
 }
 void Producto::modificarProducto() { ///(OPC 5)
     cout<<endl;
+    ArchivoMarca Amarca;
+    ArchivoCategoria Acategoria;
     cout<<"Modificar: "<<endl;
     cout<<"ID del producto: "<<_IdProducto<<endl;
     cout<<"Detalle del producto: ";
     cargarCadena(_detalle,49);
     cout<<"ID de la marca: "<<endl;
-    cout<<"1-PEDIGREE. / "<<"2-PROPLAN. / "<<"3-RAZA."<<endl;
+    Amarca.mostrarCargaMarca();
+    _IdMarca=Amarca.CargaMarcaID();
+    cout<<"ID de la categoria: "<<_Idcategoria<<endl;
+    Acategoria.mostrarCargaCategoria();
+    _Idcategoria=Acategoria.CargaCategoriaID();
+
+    /*cout<<"1-PEDIGREE. / "<<"2-PROPLAN. / "<<"3-RAZA."<<endl;
     cout<<"4-ROYAL CANIN. / "<<"5-WHISKAS. /"<<"6-KONGO."<<endl;
     cin>>_IdMarca;
     cout<<"ID de la categoria: "<<endl;
     cout<<"1-ALIMENTO PARA PERROS. / "<<"2-ALIMENTO PARA GATOS."<<endl;
     cout<<"3-PRODUCTOS DE LIMPIEZA. / "<<"4-ALIMENTOS. /"<<endl;
-    cin>>_Idcategoria;
+    cin>>_Idcategoria;*/
     cout<<"Precio: $";
     cin>>_precio;
     fflush(stdin);

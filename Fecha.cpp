@@ -1,4 +1,6 @@
 #include "Fecha.h"
+#include <sstream>
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -52,6 +54,13 @@ int Fecha::getMes()
 int Fecha::getAnio()
 {
     return _anio;
+}
+string Fecha::getFechaCompleta() {
+    std::stringstream ss;
+    ss << (getDia() < 10 ? "0" : "") << getDia() << "/"
+       << (getMes() < 10 ? "0" : "") << getMes() << "/"
+       << getAnio();
+    return ss.str();
 }
 
 void Fecha::mostrarFecha()

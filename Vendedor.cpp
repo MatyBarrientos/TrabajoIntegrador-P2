@@ -67,6 +67,8 @@ int Vendedor::getIdUsuario () {
 bool Vendedor::getEstado() {
     return Persona::getEstado();
 }
+string Vendedor::getFecha(){
+return Persona::getFecha().getFechaCompleta();}
 
 //setters
 

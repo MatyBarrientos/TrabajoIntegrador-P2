@@ -4,13 +4,13 @@
 #include <cstring>
 
 ArchivoCategoria::ArchivoCategoria() {
-    strcpy(_nombreArchivo,"ArchivoCategoria.dat");
+    strcpy(_nombreArchivo,"Archivos/Generales/ArchivoCategoria.dat");
 }
 ArchivoCategoria::ArchivoCategoria(const char *nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
 }
 ArchivoCategoria::ArchivoCategoria(bool backUp) {
-    strcpy(_nombreArchivo,"ArchivoCategoriaBackUp.dat");
+    strcpy(_nombreArchivo,"Archivos/Respaldos/ArchivoCategoriaBackUp.dat");
 }
 bool ArchivoCategoria::Guardar(const Categoria& categoria) {
     FILE *pArchivo=nullptr;
@@ -228,10 +228,11 @@ void ArchivoCategoria::Listar() {
     for(int i = 0; i < cantidadRegistros; i++) {
         fread(&categoria, sizeof(Categoria), 1, pArchivo);
         if(categoria.getEstado()==true) {
-            categoria.mostrar();
             cout<<"----------------------------------------------"<<endl;
+            categoria.mostrar();
         }
     }
+    cout<<"----------------------------------------------"<<endl;
     fclose(pArchivo);
 }
 

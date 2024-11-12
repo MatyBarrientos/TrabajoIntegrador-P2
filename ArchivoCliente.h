@@ -1,8 +1,8 @@
 #pragma once
+#include <vector>
 #include "Cliente.h"
 
-class ArchivoCliente
-{
+class ArchivoCliente {
 private:
     char _nombreArchivo[50];
 
@@ -21,6 +21,9 @@ public:
     void Listar();
     bool BackUp();
     bool modificarNombreCliente(Cliente& cliente,int pos);
+
+    vector<string> getEncabezados();
+    Cliente* listarEnVectorD();
 
 
     virtual ~ArchivoCliente();

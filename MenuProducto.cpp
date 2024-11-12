@@ -96,13 +96,54 @@ void MenuProducto::modificarProducto() {
         system("pause");
     }
 }
-///(OPC 5)LISTAR PRODUCTOS
-void MenuProducto::listarProducto() {
+void MenuProducto::listarProductos() {///LISTA TODOS LOS PRODUCTOS DEL ARCHIVO
     ArchivoProducto aux;
     aux.Listar();
     system("pause");
 }
-
+///(OPC 5)LISTAR PRODUCTOS
+void MenuProducto::listarProductoActivo(){//OPC 1
+    ArchivoProducto archivoP;
+    Producto producto;
+    int contador=0;
+    int i, cantidadRegistros = archivoP.CantidadRegistros();
+    for(i = 0; i < cantidadRegistros; i++){
+        producto = archivoP.Leer(i);
+        if(producto.getEstado()){///SI EL ESTADO ES TRUE, LO MUESTRA
+        cout<<"-------------------------------------------"<<endl;
+        producto.mostrarProducto();
+        contador++;
+        }
+    }
+    cout<<"-------------------------------------------"<<endl;
+    cout<<"Cantidad de registros ACTIVOS: "<<contador<<endl;
+    system("pause");
+}
+void MenuProducto::listarProductoBaja(){//OPC 2
+    ArchivoProducto archivoP;
+    Producto producto;
+    int contador=0;
+    int i, cantidadRegistros = archivoP.CantidadRegistros();
+    for(i = 0; i < cantidadRegistros; i++){
+        producto = archivoP.Leer(i);
+        if(!producto.getEstado()){///SI EL ESTADO ES FALSE, LO MUESTRA
+        cout<<"-------------------------------------------"<<endl;
+        producto.mostrarProducto();
+        contador++;
+        }
+    }
+    cout<<"-------------------------------------------"<<endl;
+    cout<<"Cantidad de registros DADOS DE BAJA: "<<contador<<endl;
+    system("pause");
+}
+void MenuProducto::listarProductoMarca(){//OPC 3
+    cout<<"FASTA HACER"<<endl;
+    system("pause");
+}
+void MenuProducto::listarProductoCat(){//OPC 4
+    cout<<"FASTA HACER"<<endl;
+    system("pause");
+}
 /////Filtrar por Categoria Marca
 
 void MenuProducto::filtroVenta() {
@@ -122,7 +163,6 @@ void MenuProducto::filtroVenta() {
     fflush(stdin);
     archivoProducto.mostrarProductosPorMarcaYCategoria(IDcat,IDmarca);
     system("pause");
-
 
 }
 

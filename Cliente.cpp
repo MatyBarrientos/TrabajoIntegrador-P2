@@ -81,6 +81,8 @@ char* Cliente::getEmail()
 {
     return _Email;
 }
+string Cliente::getFecha(){
+return Persona::getFechaCompleta();}
 
 //setters
 void Cliente::setDomicilio(const char* domicilio)

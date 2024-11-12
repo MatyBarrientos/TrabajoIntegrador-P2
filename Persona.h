@@ -33,6 +33,7 @@ public:
     int getDNI();
     bool getEstado();
     Fecha getFecha();
+    string getFechaCompleta();
 
 
 };

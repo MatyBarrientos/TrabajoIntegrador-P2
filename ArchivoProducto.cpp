@@ -179,7 +179,7 @@ bool ArchivoProducto::BackUp() {
     fclose(pArchivo);
     fclose(pArchivoBackUp);
 
-    cout << "Backup completado con éxito." << endl;
+    cout << "Backup completado con exito." << endl;
     return true;
 }
 
@@ -189,24 +189,28 @@ void ArchivoProducto::mostrarMarcasPorCategoria(int idCategoria) {
     ArchivoMarca aMarca;
     Producto producto;
 
-    cout << "Marcas disponibles para la categoría seleccionada:" << endl;
+    cout << "Marcas disponibles para la categoria seleccionada:" << endl;
     bool encontrado = false;
+    int marcaAnterior=-1;
     for (int i = 0; i < cantidad; i++) {
         producto = Leer(i);
-        if (producto.getEstado() && producto.getIdCategoria() == idCategoria) {
-            cout << "ID: " << producto.getIdMarca() << " -> " << aMarca.Leer(Buscar(producto.getIdMarca())).getNombre() << endl;
-            encontrado = true;
+        if(marcaAnterior!=producto.getIdMarca()){
+            if (producto.getEstado() && producto.getIdCategoria() == idCategoria) {
+                cout << "ID: " << producto.getIdMarca() << " -> " << aMarca.Leer(Buscar(producto.getIdMarca())).getNombre() << endl;
+                marcaAnterior=producto.getIdMarca();
+                encontrado = true;
+            }
         }
     }
     if (!encontrado) {
-        cout << "No se encontraron marcas para esta categoría." << endl;
+        cout << "No se encontraron marcas para esta categoria." << endl;
     }
 }
 void ArchivoProducto::mostrarProductosPorMarcaYCategoria(int idCategoria, int idMarca) {
     int cantidad = CantidadRegistros();
     Producto producto;
 
-    cout << "Productos disponibles para la categoría y marca seleccionadas:" << endl;
+    cout << "Productos disponibles para la categoria y marca seleccionadas:" << endl;
     bool encontrado = false;
     for (int i = 0; i < cantidad; i++) {
         producto = Leer(i);
@@ -217,8 +221,42 @@ void ArchivoProducto::mostrarProductosPorMarcaYCategoria(int idCategoria, int id
         }
     }
     if (!encontrado) {
-        cout << "No se encontraron productos para esta marca en la categoría seleccionada." << endl;
+        cout << "No se encontraron productos para esta marca en la categoria seleccionada." << endl;
     }
+}
+
+vector<string> ArchivoProducto::getEncabezados()
+{
+    return {"ID Producto", "Detalle","Marca","Categoria", "precio", "stock"};
+}
+
+Producto* ArchivoProducto::listarEnVectorD()
+{
+    Producto *productos=nullptr;
+    int cantidadRegistros=CantidadRegistros();
+
+    productos = new Producto[cantidadRegistros];
+    FILE *pArchivo=nullptr;
+
+    Producto productoaux;
+    pArchivo = fopen(_nombreArchivo, "rb");
+
+    if(pArchivo == nullptr) {
+        return productos;
+    }
+    for(int i = 0; i < cantidadRegistros; i++) {
+
+        fread(&productoaux, sizeof(Producto), 1, pArchivo);
+
+        if(productoaux.getEstado()==true) {
+
+            productos[i]=productoaux;
+            //system("pause");
+        }
+    }
+    fclose(pArchivo);
+   // delete []productos;
+    return productos;
 }
 
 

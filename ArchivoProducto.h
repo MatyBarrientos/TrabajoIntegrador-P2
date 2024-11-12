@@ -1,12 +1,12 @@
 #pragma once
 #include "Producto.h"
+#include <vector>
 
 ///(I.V) = Isaias Velazquez
 ///(M.B) = Matias Barrientos
 ///(B.F) = Bruno Fondati
 
-class ArchivoProducto
-{
+class ArchivoProducto {
 private:
     char _nombreArchivo[50];
 
@@ -23,7 +23,7 @@ public:
 
     int BuscarCategoria(int IDCategoria);
     int BuscarMarca(int IDMarca);
-void mostrarMarcasPorCategoria(int idCategoria);
+    void mostrarMarcasPorCategoria(int idCategoria);
     void mostrarProductosPorMarcaYCategoria(int idCategoria, int idMarca);
     ///LEER
     Producto Leer(int posicion);
@@ -37,6 +37,9 @@ void mostrarMarcasPorCategoria(int idCategoria);
     bool ModificarRegistro(const Producto& producto, int posicion);
 
     bool BackUp();
+
+    vector<string> getEncabezados();
+    Producto* listarEnVectorD();
     ///DESTRUCTOR
     virtual ~ArchivoProducto();
 

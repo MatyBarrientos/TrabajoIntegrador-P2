@@ -44,6 +44,8 @@
 		<Unit filename="ArchivoCategoria.h" />
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoFactura.cpp" />
+		<Unit filename="ArchivoFactura.h" />
 		<Unit filename="ArchivoMarca.cpp" />
 		<Unit filename="ArchivoMarca.h" />
 		<Unit filename="ArchivoProducto.cpp" />

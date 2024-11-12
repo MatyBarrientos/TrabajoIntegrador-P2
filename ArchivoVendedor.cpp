@@ -6,7 +6,7 @@ using namespace std;
 
 
 ArchivoVendedor::ArchivoVendedor() {
-    strcpy(_nombreArchivo,"ArchivoVendedor.dat");
+    strcpy(_nombreArchivo,"ArchivoVendedores.dat");
 }
 ArchivoVendedor::ArchivoVendedor(const char* nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
@@ -253,6 +253,40 @@ void ArchivoVendedor::Listar() {
         }
     }
     fclose(pArchivo);
+}
+
+vector<string> ArchivoVendedor::getEncabezados()
+{
+    return {"Nombre", "Apellido", "DNI","IDVendedor","Fecha Nacimiento", "Nivel Acceso" };
+}
+
+Vendedor* ArchivoVendedor::listarEnVectorD()
+{
+    Vendedor *vendedor=nullptr;
+    int cantidadRegistros=CantidadRegistros();
+
+    vendedor = new Vendedor[cantidadRegistros];
+    FILE *pArchivo=nullptr;
+
+    Vendedor vendedoraux;
+    pArchivo = fopen(_nombreArchivo, "rb");
+
+    if(pArchivo == nullptr) {
+        return vendedor;
+    }
+    for(int i = 0; i < cantidadRegistros; i++) {
+
+        fread(&vendedoraux, sizeof(Vendedor), 1, pArchivo);
+
+        if(vendedoraux.getEstado()==true) {
+
+            vendedor[i]=vendedoraux;
+            //system("pause");
+        }
+    }
+    fclose(pArchivo);
+   // delete []clientes;
+    return vendedor;
 }
 
 

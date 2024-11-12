@@ -243,6 +243,41 @@ void ArchivoCliente::Listar() {
     fclose(pArchivo);
 }
 
+vector<string> ArchivoCliente::getEncabezados()
+{
+
+    return {"Nombre", "Apellido", "DNI","Fecha Nacimiento", "Telefono", "Email", "Direccion"};
+}
+
+Cliente* ArchivoCliente::listarEnVectorD()
+{
+    Cliente *clientes=nullptr;
+    int cantidadRegistros=CantidadRegistros();
+
+    clientes = new Cliente[cantidadRegistros];
+    FILE *pArchivo=nullptr;
+
+    Cliente clienteaux;
+    pArchivo = fopen(_nombreArchivo, "rb");
+
+    if(pArchivo == nullptr) {
+        return clientes;
+    }
+    for(int i = 0; i < cantidadRegistros; i++) {
+
+        fread(&clienteaux, sizeof(Cliente), 1, pArchivo);
+
+        if(clienteaux.getEstado()==true) {
+
+            clientes[i]=clienteaux;
+            //system("pause");
+        }
+    }
+    fclose(pArchivo);
+   // delete []clientes;
+    return clientes;
+}
+
 ArchivoCliente::~ArchivoCliente() {
     //dtor
 }

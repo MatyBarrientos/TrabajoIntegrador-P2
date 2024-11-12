@@ -35,6 +35,7 @@ public:
     int getNivelUsuario ();
     int getIdVendedor ();
     bool getEstado();
+    string getFecha();
 
     ////modificadores
     void modificarApellido();
