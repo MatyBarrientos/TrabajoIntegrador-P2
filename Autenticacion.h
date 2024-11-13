@@ -11,6 +11,7 @@ public:
     virtual ~Autenticacion();
     bool ingresarSistema();
     bool nivelAcceso();
+    int VendedorActual();
 
 private:
     Vendedor vendedorActual;

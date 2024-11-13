@@ -140,7 +140,7 @@ int Marca::proxID () {
     if(pos==0) {
         cout<<"Ingresar el primer IDMarca: ";
         cin>>nuevoID;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        fflush(stdin);
         return nuevoID;
     } else {
         Marca aux;

@@ -103,7 +103,7 @@ bool ArchivosCSV::escribirFilaVendedor() {
     return true;
 }
 
-bool ArchivosCSV::escribirFilaProdcuto() {
+bool ArchivosCSV::escribirFilaProducto() {
     ArchivoProducto archivo;
     ArchivoMarca marca;
     ArchivoCategoria categoria;

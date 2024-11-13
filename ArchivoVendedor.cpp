@@ -6,7 +6,7 @@ using namespace std;
 
 
 ArchivoVendedor::ArchivoVendedor() {
-    strcpy(_nombreArchivo,"ArchivoVendedores.dat");
+    strcpy(_nombreArchivo,"ArchivoVendedor.dat");
 }
 ArchivoVendedor::ArchivoVendedor(const char* nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
@@ -80,6 +80,7 @@ bool ArchivoVendedor::BajaRegistro() {
     }
     cout<<"Ingrese el número de ID del Vendedor: ";
     cin>>IDVendedor;
+    fflush(stdin);
     int pos=Buscar(IDVendedor);
     if(pos==-1||pos==-2) {
         cout<<"No hay vendedor con esa ID.";
@@ -107,6 +108,7 @@ bool ArchivoVendedor::AltaRegistro() {
     }
     cout<<"Ingrese el número de ID del Vendedor: ";
     cin>>IDVendedor;
+    fflush(stdin);
     int pos=Buscar(IDVendedor);
     if(pos==-1||pos==-2) {
         cout<<"No hay vendedor con esa ID.";
@@ -173,6 +175,7 @@ bool ArchivoVendedor::CambiarEstadoRegistro() {
     }
     cout<<"Ingrese el número de ID del Vendedor: ";
     cin>>IDVendedor;
+    fflush(stdin);
     int pos=Buscar(IDVendedor);
     if(pos==-1||pos==-2) {
         cout<<"No hay Vendedor con es IDVendedor."<<endl;
@@ -185,6 +188,7 @@ bool ArchivoVendedor::CambiarEstadoRegistro() {
         cout<<"El Vendedor está dado de alta."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             vendedor.setEstado(false);
             cout<<"Estado cambiado a Baja."<<endl;
@@ -196,6 +200,7 @@ bool ArchivoVendedor::CambiarEstadoRegistro() {
         cout<<"El Vendedor está dado de Baja."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             vendedor.setEstado(true);
             cout<<"Estado cambiado a Alta."<<endl;
@@ -289,6 +294,41 @@ Vendedor* ArchivoVendedor::listarEnVectorD()
     return vendedor;
 }
 
+void ArchivoVendedor::ListarIDyNombre (){
+    int cantReg=CantidadRegistros();
+    FILE *pArchivo=nullptr;
+    pArchivo=fopen(_nombreArchivo, "rb");
+    if(pArchivo == nullptr){
+        return;
+    }
+    Vendedor vendedor;
+    for(int i=0;i<cantReg;i++){
+        fread(&vendedor, sizeof(Vendedor),1,pArchivo);
+        if(vendedor.getEstado()==true){
+            cout<<"------------------------------"<<endl;
+            cout<<"ID "<<vendedor.getIdVendedor()<<"  "<<vendedor.getNombre()<<" "<<vendedor.getApellido()<<endl;
+        }
+    }
+    cout<<"------------------------------"<<endl;
+    fclose(pArchivo);
+}
+
+void ArchivoVendedor::BuscarIDvendedor (int IDvendedor){
+    int cantReg=CantidadRegistros();
+    FILE *pArchivo=nullptr;
+    pArchivo=fopen(_nombreArchivo, "rb");
+    if(pArchivo == nullptr){
+        return;
+    }
+    Vendedor vendedor;
+    for(int i=0;i<cantReg;i++){
+        fread(&vendedor, sizeof(Vendedor),1,pArchivo);
+        if(vendedor.getIdVendedor()==IDvendedor){
+            cout<<"ID vendedor: "<<vendedor.getIdVendedor()<<", "<<vendedor.getApellido()<<" "<<vendedor.getNombre()<<endl;
+        }
+    }
+    fclose(pArchivo);
+}
 
 
 ArchivoVendedor::~ArchivoVendedor() {

@@ -17,6 +17,6 @@ class ArchivosCSV
         virtual ~ArchivosCSV();
         bool escribirFilaCliente();
         bool escribirFilaVendedor();
-        bool escribirFilaProdcuto();
+        bool escribirFilaProducto();
 
 };

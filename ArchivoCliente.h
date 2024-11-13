@@ -21,7 +21,7 @@ public:
     void Listar();
     bool BackUp();
     bool modificarNombreCliente(Cliente& cliente,int pos);
-
+    void listarIdNombreDNI();
     vector<string> getEncabezados();
     Cliente* listarEnVectorD();
 

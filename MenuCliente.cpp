@@ -11,37 +11,37 @@ MenuCliente::MenuCliente() {
 bool MenuCliente::agregarCliente() {
     int DNI;
     ArchivoCliente archivoCliente;
-    fflush(stdin);
 
     cout<<"DNI: ";
     cin>>DNI;
+    fflush(stdin);
     int posicion=archivoCliente.Buscar(DNI);
     if(posicion==-2 || posicion==-1) {
         Persona persona;
         Cliente cliente(persona);
         cliente.cargar(DNI);
-        fflush(stdin);
+
         archivoCliente.Guardar(cliente);
         return true;
     } else {
         cout<<"Cliente ya existente."<<endl;
-        fflush(stdin);
+
         return false;
     }
 }
 ///baja lógica
 bool MenuCliente::bajaCliente() {
-    fflush(stdin);
+
     ArchivoCliente archivoCliente;
     return archivoCliente.BajaRegistro();
 }
 bool MenuCliente::altaCliente() {
-    fflush(stdin);
+
     ArchivoCliente archivoCliente;
     return archivoCliente.AltaRegistro();
 }
 bool MenuCliente::cambiarEstadoCliente() {
-    fflush(stdin);
+
     ArchivoCliente archivoCliente;
     return archivoCliente.CambiarEstadoRegistro();
 }
@@ -66,7 +66,7 @@ void MenuCliente::OpcionDos() {
     cambiarEstadoCliente();
     system("pause");
 
-    fflush(stdin);
+    //fflush(stdin);
 }
 
 void MenuCliente::OpcionTres() {
@@ -74,7 +74,7 @@ void MenuCliente::OpcionTres() {
     cout << "Buscar Cliente." << endl;
     system("cls");
     int DNI,posicion;
-    fflush(stdin);
+    //fflush(stdin);
     cout<<"Ingrese el DNI del cliente a buscar: ";
     cin>>DNI;
     fflush(stdin);
@@ -94,7 +94,7 @@ void  MenuCliente::OpcionCuatro() {
     cout << "Modificar Cliente." << endl;
     int DNI,posicion,opc=-1;
     MenuSalida ms;
-    fflush(stdin);
+    //fflush(stdin);
     cout<<"Ingrese el DNI del cliente a modificar: ";
     cin>>DNI;
     fflush(stdin);
@@ -108,6 +108,7 @@ void  MenuCliente::OpcionCuatro() {
         while(opc != 0) {
             ms.mostrarSubMenuUnoTres();
             cin >> opc;
+            fflush(stdin);
             switch(opc) {
             case 1:
                 system("cls");
@@ -131,7 +132,7 @@ void  MenuCliente::OpcionCuatro() {
                 break;
             case 6:
                 cliente.cargar(cliente.getIdCliente());
-                fflush(stdin);
+
                 system("cls");
                 break;
             case 0:

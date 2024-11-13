@@ -5,13 +5,11 @@ class Factura
 {
 private:
     int _nroFactura;
-    char _tipoFactura;
     int _IdCliente;
     int _IdVendedor;
-    DetalleVenta* _detalle;
-    int _cantidadDetalles; //es para el vector dinámico
-    float _total;
-    int _metodoPago;
+    int _cantidadDetalles;         // Número de detalles para esta factura
+    int _posicionDetalleInicio;    // Posición en DetalleVenta.dat donde inician los detalles de esta factura la idea era que los registros tengan el mismo tamaño
+    float _total;                   // tratamos de evitar los vectores dínamicos a toda costa
     Fecha _fechaVenta;
     bool _estado;
 public:
@@ -25,29 +23,28 @@ public:
 
     ///SETTERS
     void setNroFactura(int nFactura);
-    void setTipoFactura(char tipoFactura);
     void setIdCliente(int IDcliente);
     void setIdVendedor(int IDvendedor);
-    void setDetalleVenta(DetalleVenta detalle);
+    void setCantidadDetalles(int cantidad);        // Configura la cantidad de detalles
+    void setPosicionDetalleInicio(int posicion);   // Configura la posición inicial
     void setTotal(float total);
     void setEstado(bool estado);
-    void setMetodoPago(int metodoPago);
     void setFechaCompra(Fecha fechaCompra);
 
     ///GETTERS
     int  getNroFactura();
-    char getTipoFactura();
     int  getIdCliente();
     int  getIdVendedor();
-    int getCantidadDetalle();
+    int getCantidadDetalles();
+    int getPosicionDetalleInicio();
     float getTotal();
     bool  getEstado();
-    int  getMetodoPago();
     Fecha getFechaCompra();
 
     ///
     float calcularTotal();
     void agregarDetalle(const DetalleVenta& detalle);
+    int proxID ();
 
 
 

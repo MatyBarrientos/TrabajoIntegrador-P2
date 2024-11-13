@@ -53,7 +53,7 @@ bool ArchivoFactura::Guardar(const Factura& factura) {
     return ok;
 }
 
-int ArchivoFactura::Buscar(int IDfactura) {
+int ArchivoFactura::BuscarPorID(int IDfactura) {
     FILE *pArchivo=nullptr;
     pArchivo = fopen(_nombreArchivo, "rb");
     if(pArchivo == nullptr) {
@@ -85,69 +85,6 @@ bool ArchivoFactura::ModificarRegistro(const Factura& factura, int posicion) {
     return ok;
 }
 
-bool ArchivoFactura::BajaRegistro() {
-    int IDFactura;
-    Factura factura;
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb+");
-    if(pArchivo == nullptr) {
-        return false;
-    }
-    cout<<"Ingrese el ID de la Factura: ";
-    cin>>IDFactura;
-    fflush(stdin);
-    int pos=Buscar(IDFactura);
-    if(pos==-1||pos==-2) {
-        cout<<"No hay Factura con ese ID."<<endl;
-        system("pause");
-        fclose(pArchivo);
-        return false;
-    }
-    factura=Leer(pos);
-    factura.setEstado(false);
-    bool resultado=ModificarRegistro(factura,pos);
-    fclose(pArchivo);
-    if(resultado) {
-        cout<<"La Factura fue dada de Baja"<<endl;
-        system("pause");
-    } else {
-        cout << "Error al modificar el registro de la factura." << endl;
-        system("pause");
-    }
-    return resultado;
-}
-
-bool ArchivoFactura::AltaRegistro() {
-    int IDfactura;
-    Factura factura;
-    FILE *pArchivo=nullptr;
-    pArchivo = fopen(_nombreArchivo, "rb+");
-    if(pArchivo == nullptr) {
-        return false;
-    }
-    cout<<"Ingrese el ID de la Factura: ";
-    cin>>IDfactura;
-    fflush(stdin);
-    int pos=Buscar(IDfactura);
-    if(pos==-1||pos==-2) {
-        cout<<"No hay Factura con ese ID."<<endl;
-        system("pause");
-        fclose(pArchivo);
-        return false;
-    }
-    factura=Leer(pos);
-    factura.setEstado(true);
-    bool resultado=ModificarRegistro(factura,pos);
-    fclose(pArchivo);
-    if(resultado) {
-        cout<<"La factura fue dado de Alta"<<endl;
-        system("pause");
-    } else {
-        cout << "Error al modificar el registro de la factura." << endl;
-        system("pause");
-    }
-    return resultado;
-}
 
 Factura ArchivoFactura::Leer(int posicion) {
     FILE *pArchivo=nullptr;
@@ -174,23 +111,6 @@ int ArchivoFactura::CantidadRegistros() {
     return cantidadRegistros;
 }
 
-void ArchivoFactura::Listar() {
-    int cantidadRegistros=CantidadRegistros();
-    FILE *pArchivo=nullptr;
-    Factura factura;
-    pArchivo = fopen(_nombreArchivo, "rb");
-    if(pArchivo == nullptr) {
-        return;
-    }
-    for(int i = 0; i < cantidadRegistros; i++) {
-        fread(&factura, sizeof(Factura), 1, pArchivo);
-        if(factura.getEstado()==true) {
-            cout<<"----------------------------------------------"<<endl;
-            factura.mostrar();
-        }
-    }
-    cout<<"----------------------------------------------"<<endl;
-    fclose(pArchivo);
-}
+
 
 ArchivoFactura::~ArchivoFactura(){}///DESTRUCTOR

@@ -14,8 +14,8 @@ bool Autenticacion::ingresarSistema()
     while (true)
     {
         cout << "Ingrese su IDVendedor: ";
-        fflush(stdin);
         cin >> IDVendedor;
+        fflush(stdin);
 
         if (IDVendedor == 0)
         {
@@ -70,6 +70,10 @@ bool Autenticacion::nivelAcceso()
     {
         return false;
     }
+}
+int Autenticacion::VendedorActual()
+{
+    return vendedorActual.getIdVendedor();
 }
 
 Autenticacion::~Autenticacion()

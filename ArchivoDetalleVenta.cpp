@@ -1,4 +1,5 @@
 #include "ArchivoDetalleVenta.h"
+#include "Factura.h"
 #include "Funciones.h"
 #include <cstring>
 
@@ -11,8 +12,38 @@ ArchivoDetalleVenta::ArchivoDetalleVenta(const char *nombreArchivo) {
 ArchivoDetalleVenta::ArchivoDetalleVenta(bool backUp) {
     strcpy(_nombreArchivo,"ArchivoDetalleVentaBackUp.dat");
 }
+int ArchivoDetalleVenta::Guardar(const DetalleVenta& detalle) {
+    FILE *pArchivo = fopen(_nombreArchivo, "ab");
+    if (pArchivo == nullptr) {
+        return -1; // Indicador de error
+    }
 
-bool ArchivoDetalleVenta::Guardar(const DetalleVenta& detalle) {
+    // Obtener posición antes de escribir
+    int posicion = ftell(pArchivo) / sizeof(DetalleVenta);
+
+    // Escribir el detalle en el archivo
+    if (fwrite(&detalle, sizeof(DetalleVenta), 1, pArchivo) != 1) {
+        fclose(pArchivo);
+        return -1;
+    }
+
+    fclose(pArchivo);
+    return posicion; // Devuelve la posición del primer detalle guardado
+}
+DetalleVenta ArchivoDetalleVenta::Leer(int posicion) {
+    FILE *pArchivo=nullptr;
+    pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == nullptr) {
+        return DetalleVenta();
+    }
+    DetalleVenta detalle;;
+    fseek(pArchivo, sizeof(DetalleVenta) * posicion, SEEK_SET);
+    fread(&detalle, sizeof(DetalleVenta), 1, pArchivo);
+    fclose(pArchivo);
+    return detalle;
+}
+
+/*bool ArchivoDetalleVenta::Guardar(const DetalleVenta& detalle) {
     FILE *pArchivo=nullptr;
     pArchivo= fopen(_nombreArchivo, "ab");
     if(pArchivo == nullptr) {
@@ -21,7 +52,7 @@ bool ArchivoDetalleVenta::Guardar(const DetalleVenta& detalle) {
     bool ok = fwrite(&detalle, sizeof(DetalleVenta), 1, pArchivo);
     fclose(pArchivo);
     return ok;
-}
+}*/
 bool ArchivoDetalleVenta::BackUp() {
     FILE *pArchivo = nullptr;
     FILE *pArchivoBackUp = nullptr;
@@ -103,42 +134,15 @@ int ArchivoDetalleVenta::cantidadDetalles(int IDVenta) {
     }
 
 }
-
-
-    bool agregarDetalle(DetalleVenta& detalle, Factura& factura) {
-        FILE* pArchivo = fopen("DetalleVenta.dat", "ab");
-        if (!pArchivo) return false;
-
-        // Si es el primer detalle para esta factura, guardamos la posición de inicio
-        if (factura.getCantidadDetalles() == 0) {
-            int posicionInicio = ftell(pArchivo) / sizeof(DetalleVenta);
-            factura.setPosicionDetalleInicio(posicionInicio);
-        }
-
-        // Escribir detalle y actualizar contador en factura
-        fwrite(&detalle, sizeof(DetalleVenta), 1, pArchivo);
-        factura.setCantidadDetalles(factura.getCantidadDetalles() + 1);
-
-        fclose(pArchivo);
-        return true;
+int ArchivoDetalleVenta::CantidadRegistros() {
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL) {
+        return 0;
     }
-
-    bool leerDetalles(const Factura& factura, std::vector<DetalleVenta>& detalles) {
-        FILE* pArchivo = fopen("DetalleVenta.dat", "rb");
-        if (!pArchivo) return false;
-
-        // Saltar a la posición inicial de los detalles para esta factura
-        fseek(pArchivo, factura.getPosicionDetalleInicio() * sizeof(DetalleVenta), SEEK_SET);
-
-        DetalleVenta detalle;
-        for (int i = 0; i < factura.getCantidadDetalles(); i++) {
-            fread(&detalle, sizeof(DetalleVenta), 1, pArchivo);
-            detalles.push_back(detalle);
-        }
-
-        fclose(pArchivo);
-        return true;
-    }
+    fseek(pArchivo, 0, SEEK_END);
+    int cantidadRegistros = ftell(pArchivo) / sizeof(DetalleVenta);
+    fclose(pArchivo);
+    return cantidadRegistros;
 }
 
     ArchivoDetalleVenta::~ArchivoDetalleVenta() {

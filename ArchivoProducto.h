@@ -43,6 +43,10 @@ public:
     ///DESTRUCTOR
     virtual ~ArchivoProducto();
 
+
+    ///propuesto por Vero
+    bool BuscarNombreProducto(const char* nombre);
+
 protected:
 
 };

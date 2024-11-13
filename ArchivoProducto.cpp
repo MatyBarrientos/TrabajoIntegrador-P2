@@ -54,6 +54,23 @@ int ArchivoProducto::Buscar(int IDProducto) {
     fclose(pArchivo);
     return -1;
 }
+bool ArchivoProducto::BuscarNombreProducto(const char* nombre) {
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL) {
+        return false;
+    }
+    Producto producto;
+    int i = 0;
+    while(fread(&producto, sizeof(Producto), 1, pArchivo)) {
+        int repetido=strcmp(producto.getDetalle(),nombre);
+        if(repetido==0) {
+            fclose(pArchivo);
+            return false;
+        }
+    }
+    fclose(pArchivo);
+    return true;
+}
 
 int ArchivoProducto::BuscarMarca(int IDMarca) {
     FILE *pArchivo = fopen(_nombreArchivo, "rb");
@@ -216,7 +233,7 @@ void ArchivoProducto::mostrarProductosPorMarcaYCategoria(int idCategoria, int id
         producto = Leer(i);
         if (producto.getIdCategoria() == idCategoria && producto.getIdMarca() == idMarca && producto.getEstado()) {
             cout << "ID Producto: " << producto.getIdProducto() << " -> " << producto.getDetalle()
-                 << ", Precio: $" << producto.getPrecioVenta() << endl;
+                 << ", Precio: $" << producto.getPrecioVenta() <<" Stock-> "<<producto.getStock()<<endl;
             encontrado = true;
         }
     }

@@ -32,12 +32,14 @@ void Vendedor::cargar(int DNI) {
     Persona::cargar(DNI);
     cout<<"Nivel de acceso: ";
     cin>>_nivelAcceso;
+    fflush(stdin);
     _IdVendedor=IdVendedor();
 }
 void Vendedor::cargar() {
     Persona::cargar();
     cout<<"Nivel de acceso: ";
     cin>>_nivelAcceso;
+    fflush(stdin);
     _IdVendedor=IdVendedor();
 }
 void Vendedor::cargarVendedor() {
@@ -45,8 +47,16 @@ void Vendedor::cargarVendedor() {
     _IdVendedor=IdVendedor();
     cout<<"Nivel de acceso: ";
     cin>>_nivelAcceso;
+    fflush(stdin);
 }
 
+void Vendedor::modificarVendedor() {
+    cout<<"ID vendedor: "<<_IdVendedor<<endl;
+    Persona::cargar();
+    cout<<"Nivel de acceso: ";
+    cin>>_nivelAcceso;
+    fflush(stdin);
+}
 //getters
 
 char* Vendedor::getNombre () {
@@ -86,7 +96,7 @@ void Vendedor::setEstado(bool estado) {
 void Vendedor::modificarNombre() {
     char aux[50];
     system("cls");
-    fflush(stdin);
+
     cout<<"Nombre actual: "<<Persona::getNombre()<<endl;
     cout<<"Ingrese el nuevo Nombre:";
     cargarCadena(aux,49);
@@ -97,7 +107,7 @@ void Vendedor::modificarNombre() {
 void Vendedor::modificarApellido() {
     char aux[50];
     system("cls");
-    fflush(stdin);
+
     cout<<"Apellido actual: "<<Persona::getApellido()<<endl;
     cout<<"Ingrese el nuevo Apellido:";
     cargarCadena(aux,49);
@@ -112,6 +122,7 @@ void Vendedor::modificarNivel() {
         cout<<"El nivel de acceso es Administrador "<<aNivel<<endl;
         cout<<"Desea cambiarlo a No Adminitrador? (SI-1 || NO-2)"<<endl;
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             setNivelUsuario(1);
             cout<<"Acceso administrador quitado."<<endl;
@@ -122,6 +133,7 @@ void Vendedor::modificarNivel() {
         cout<<"Su nivel de acceso es: "<<aNivel<<endl;
         cout<<"Desea cambiarlo a Adminitrador? (SI-1 || NO-2):"<<endl;
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             setNivelUsuario(2);
             cout<<"Acceso administrador concedido."<<endl;
@@ -139,6 +151,7 @@ int Vendedor::IdVendedor () { ///RECIBE EL ARCHIVO Vendedor
     if(pos==0) { /// PREGUNTAMOS SI NO HAY REGISTROS EN EL ARCHIVO
         cout<<"Ingresar el primer ID de productos: ";
         cin>>nuevoID;
+        fflush(stdin);
         return nuevoID; ///RETORNAMOS EL 1ER ID INGRESADO POR TECLADO
     } else {
         Vendedor aux; ///OBJ PRODUCTO AUXILIAR

@@ -81,6 +81,7 @@ bool ArchivoCliente::BajaRegistro() {
     }
     cout<<"Ingrese el número de DNI del Cliente: ";
     cin>>DNI;
+    fflush(stdin);
     int pos=Buscar(DNI);
     if(pos==-1||pos==-2) {
         cout<<"No hay Cliente con es DNI."<<endl;
@@ -112,6 +113,7 @@ bool ArchivoCliente::AltaRegistro() {
     }
     cout<<"Ingrese el número de DNI del Cliente: ";
     cin>>DNI;
+    fflush(stdin);
     int pos=Buscar(DNI);
     if(pos==-1||pos==-2) {
         cout<<"No hay Cliente con es DNI."<<endl;
@@ -143,6 +145,7 @@ bool ArchivoCliente::CambiarEstadoRegistro() {
     }
     cout<<"Ingrese el número de DNI del Cliente: ";
     cin>>DNI;
+    fflush(stdin);
     int pos=Buscar(DNI);
     if(pos==-1||pos==-2) {
         cout<<"No hay Cliente con es DNI."<<endl;
@@ -155,6 +158,7 @@ bool ArchivoCliente::CambiarEstadoRegistro() {
         cout<<"El cliente está dado de alta."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             cliente.setEstado(false);
             cout<<"Estado cambiado a Baja."<<endl;
@@ -166,6 +170,7 @@ bool ArchivoCliente::CambiarEstadoRegistro() {
         cout<<"El cliente está dado de Baja."<<endl;
         cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
         cin>>opc;
+        fflush(stdin);
         if(opc==1) {
             cliente.setEstado(true);
             cout<<"Estado cambiado a Alta."<<endl;
@@ -243,12 +248,14 @@ void ArchivoCliente::Listar() {
     fclose(pArchivo);
 }
 
+///OBTENER ENCABEZADOS
 vector<string> ArchivoCliente::getEncabezados()
 {
 
     return {"Nombre", "Apellido", "DNI","Fecha Nacimiento", "Telefono", "Email", "Direccion"};
 }
 
+///LISTAR EN VECTOR DINAMICO
 Cliente* ArchivoCliente::listarEnVectorD()
 {
     Cliente *clientes=nullptr;
@@ -276,6 +283,29 @@ Cliente* ArchivoCliente::listarEnVectorD()
     fclose(pArchivo);
    // delete []clientes;
     return clientes;
+}
+
+void ArchivoCliente::listarIdNombreDNI(){
+    int cantReg=CantidadRegistros();
+    FILE *pArchivo=nullptr;
+    pArchivo=fopen(_nombreArchivo, "rb");
+    if(pArchivo == nullptr){
+        return;
+    }
+    Cliente cliente;
+    int contador=0;
+    for(int i=0;i<cantReg;i++){
+        fread(&cliente, sizeof(Cliente),1,pArchivo);
+        if(cliente.getEstado()==true){
+            cout<<"-------------------------------------------"<<endl;
+            cout<<"DNI "<<cliente.getIdCliente()<<"  "<<cliente.getNombre()<<" "<<cliente.getApellido()<<endl;
+            contador++;
+        }
+    }
+    cout<<"-------------------------------------------"<<endl;
+    cout<<"cantidad de registros: "<<contador<<endl;
+    //system("pause");
+    fclose(pArchivo);
 }
 
 ArchivoCliente::~ArchivoCliente() {

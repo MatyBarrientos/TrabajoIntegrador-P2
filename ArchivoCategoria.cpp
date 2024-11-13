@@ -4,13 +4,13 @@
 #include <cstring>
 
 ArchivoCategoria::ArchivoCategoria() {
-    strcpy(_nombreArchivo,"Archivos/Generales/ArchivoCategoria.dat");
+    strcpy(_nombreArchivo,"ArchivoCategoria.dat");
 }
 ArchivoCategoria::ArchivoCategoria(const char *nombreArchivo) {
     strcpy(_nombreArchivo,nombreArchivo);
 }
 ArchivoCategoria::ArchivoCategoria(bool backUp) {
-    strcpy(_nombreArchivo,"Archivos/Respaldos/ArchivoCategoriaBackUp.dat");
+    strcpy(_nombreArchivo,"ArchivoCategoriaBackUp.dat");
 }
 bool ArchivoCategoria::Guardar(const Categoria& categoria) {
     FILE *pArchivo=nullptr;

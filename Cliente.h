@@ -46,6 +46,8 @@ public:
     void modificarTelefono();
     void modificarMail();
 
+    void mostrarDato();
+
 
 
 

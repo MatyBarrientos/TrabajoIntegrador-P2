@@ -23,6 +23,7 @@ void MenuProducto::cambiarEstadoProducto() {
     Producto producto;
     cout<<"Ingresar el ID del producto al que desea cambiar el estado: "<<endl;
     cin>>inID;
+    fflush(stdin);
     pos=auxArch.Buscar(inID); ///BUSCAMOS LA POSICION EN EL ARCHIVO
     if(pos==-1) { ///SI DEVUELVE -1 ES XQ NO ESTA EL ID EN EL ARCHIVO
         cout<<"ID no encontrado."<<endl;
@@ -34,6 +35,7 @@ void MenuProducto::cambiarEstadoProducto() {
             cout<<"El producto esta dado de alta."<<endl;
             cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
             cin>>opc;
+            fflush(stdin);
             if(opc==1) { /// PREG SI LE QUIERE CAMBIAR EL ESTADO A FALSE
                 producto.setEstado(false); ///SETTEAMOS EL ESTADO
                 //producto.mostrarProducto(); ///PARA VERIFICAR QUE EL CAMBIO SE HIZO
@@ -49,6 +51,7 @@ void MenuProducto::cambiarEstadoProducto() {
             cout<<"El Producto esta dado de Baja."<<endl;
             cout<<"Desea cambiar el estado? (1- Si || 2- NO) :";
             cin>>opc;
+            fflush(stdin);
             if(opc==1) { /// PREG SI LE QUIERE CAMBIAR EL ESTADO A TRUE
                 producto.setEstado(true); ///SETTEAMOS EL ESTADO
                 //producto.mostrarProducto(); ///PARA VERIFICAR QUE EL CAMBIO SE HIZO
@@ -68,6 +71,7 @@ void MenuProducto::buscarProducto() {
     ArchivoProducto auxArch;
     cout<<"Ingresar el ID del producto que desea buscar: "<<endl;
     cin>>inID;
+    fflush(stdin);
     pos=auxArch.Buscar(inID); ///BUSCAMOS LA POSICION EN EL ARCHIVO DEL ID
     if(pos==-1) { ///SI DEVUELVE -1 ES XQ NO ESTA EL ID EN EL ARCHIVO
         cout<<"ID no encontrado."<<endl;
@@ -81,6 +85,7 @@ void MenuProducto::modificarProducto() {
     ArchivoProducto archivo;
     cout<<"Ingresar el ID del producto al que desea modificar: "<<endl;
     cin>>inID;
+    fflush(stdin);
     pos=archivo.Buscar(inID); ///BUSCAMOS LA POSICION EN EL ARCHIVO
     if(pos==-1) { ///SI DEVUELVE -1 ES XQ NO ESTA EL ID EN EL ARCHIVO
         cout<<"ID no encontrado."<<endl;
@@ -162,7 +167,7 @@ void MenuProducto::filtroVenta() {
     cin>>IDmarca;
     fflush(stdin);
     archivoProducto.mostrarProductosPorMarcaYCategoria(IDcat,IDmarca);
-    system("pause");
+    //system("pause");
 
 }
 

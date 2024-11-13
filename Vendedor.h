@@ -41,7 +41,7 @@ public:
     void modificarApellido();
     void modificarNombre();
     void modificarNivel();
-
+    void modificarVendedor();
 
 
 

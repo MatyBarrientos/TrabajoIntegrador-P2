@@ -17,6 +17,7 @@
 					<Add directory="include" />
 					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
 					<Add directory="./" />
+					<Add directory="../TrabajoIntegrador-P2-main" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +31,7 @@
 					<Add directory="include" />
 					<Add directory="D:/Estudios/UTN/Prog 2/workspace/TrabajoIntegrador" />
 					<Add directory="./" />
+					<Add directory="../TrabajoIntegrador-P2-main" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -44,6 +46,8 @@
 		<Unit filename="ArchivoCategoria.h" />
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoDetalleVenta.cpp" />
+		<Unit filename="ArchivoDetalleVenta.h" />
 		<Unit filename="ArchivoFactura.cpp" />
 		<Unit filename="ArchivoFactura.h" />
 		<Unit filename="ArchivoMarca.cpp" />
@@ -52,6 +56,8 @@
 		<Unit filename="ArchivoProducto.h" />
 		<Unit filename="ArchivoVendedor.cpp" />
 		<Unit filename="ArchivoVendedor.h" />
+		<Unit filename="ArchivosCSV.cpp" />
+		<Unit filename="ArchivosCSV.h" />
 		<Unit filename="Autenticacion.cpp" />
 		<Unit filename="Autenticacion.h" />
 		<Unit filename="Categoria.cpp" />
@@ -74,10 +80,14 @@
 		<Unit filename="MenuOpciones.h" />
 		<Unit filename="MenuProducto.cpp" />
 		<Unit filename="MenuProducto.h" />
+		<Unit filename="MenuRespaldo.cpp" />
+		<Unit filename="MenuRespaldo.h" />
 		<Unit filename="MenuSalida.cpp" />
 		<Unit filename="MenuSalida.h" />
 		<Unit filename="MenuVendedor.cpp" />
 		<Unit filename="MenuVendedor.h" />
+		<Unit filename="MenuVenta.cpp" />
+		<Unit filename="MenuVenta.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
 		<Unit filename="Producto.cpp" />

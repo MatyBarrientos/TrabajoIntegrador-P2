@@ -15,10 +15,11 @@ bool MenuVendedor::agregarVendedor() {
     int DNI;
     ArchivoVendedor archivoVendedor;
     ArchivoCliente archivoCliente;
-    fflush(stdin);
+
 
     cout<<"DNI: ";
     cin>>DNI;
+    fflush(stdin);
     int posicionV=archivoVendedor.BuscarDNI(DNI);
     int posicionC=archivoCliente.Buscar(DNI);
     if(posicionV == -1 || posicionV == -2) {
@@ -26,34 +27,34 @@ bool MenuVendedor::agregarVendedor() {
             Persona persona;
             Vendedor vendedor(persona);
             vendedor.cargar(DNI);
-            fflush(stdin);
+
             archivoVendedor.Guardar(vendedor);
             return true;
         } else {
             cout<<"Vendedor ya existente."<<endl;
-            fflush(stdin);
+
             return false;
         }
 
     } else {
         cout<<"Vendedor ya existente."<<endl;
-        fflush(stdin);
+
         return false;
     }
 }
 ///baja lógica
 bool MenuVendedor::bajaVendedor() {
-    fflush(stdin);
+
     ArchivoVendedor archivoVendedor;
     return archivoVendedor.BajaRegistro();
 }
 bool MenuVendedor::altaVendedor() {
-    fflush(stdin);
+
     ArchivoVendedor archivoVendedor;
     return archivoVendedor.AltaRegistro();
 }
 bool MenuVendedor::cambiarEstadoVendedor() {
-    fflush(stdin);
+
     ArchivoVendedor archivoVendedor;
     return archivoVendedor.CambiarEstadoRegistro();
 }
@@ -76,14 +77,14 @@ void MenuVendedor::OpcionDos() {
     cout << "Estado del vendedor." << endl;
     cambiarEstadoVendedor();
     system("pause");
-    fflush(stdin);
+
 }
 void MenuVendedor::OpcionTres() {
 
     cout << "Buscar Vendedor." << endl;
     system("cls");
     int ID,posicion;
-    fflush(stdin);
+
     cout<<"Ingrese el ID del vendedor a buscar: ";
     cin>>ID;
     fflush(stdin);
@@ -102,7 +103,7 @@ void  MenuVendedor::OpcionCuatro() {
     cout << "Modificar Vendedor." << endl;
     int ID,posicion,opc=-1;
     MenuSalida ms;
-    fflush(stdin);
+
     cout<<"Ingrese el ID del vendedor a modificar: ";
     cin>>ID;
     fflush(stdin);
@@ -116,6 +117,7 @@ void  MenuVendedor::OpcionCuatro() {
         while(opc != 0) {
             ms.mostrarSubMenuDosTres();
             cin >> opc;
+            fflush(stdin);
             system("cls");
             switch(opc) {
             case 1:
@@ -131,8 +133,7 @@ void  MenuVendedor::OpcionCuatro() {
                 system("cls");
                 break;
             case 4:
-                vendedor.cargarVendedor();
-                fflush(stdin);
+                vendedor.modificarVendedor();
                 system("cls");
                 break;
             case 0:

@@ -14,7 +14,7 @@
 Producto::Producto() {
     _IdProducto=_IdMarca=_Idcategoria=_stock=-1;
     strcpy(_detalle,"sin detalle");
-    _precio=-1;
+    _precio=0;
     _estado=0;
     ///LES PUSE -1 A LOS VALORES DEL CONSTRUCTOR QUE NO RECIBE PARAMETROS
 }
@@ -31,12 +31,18 @@ Producto::Producto(int idArt, const char* detalle, int idMarca, int idCat, float
 void Producto::cargarProducto(int nuevoID) {
     ArchivoMarca Amarca;
     ArchivoCategoria Acategoria;
+    ArchivoProducto archivoProducto;
     _IdProducto=nuevoID;
     cout<<endl;
     cout<<"Ingresar: "<<endl;
     cout<<"ID del producto: "<<_IdProducto<<endl;
     cout<<"Detalle del producto: ";
     cargarCadena(_detalle,49);
+    while(archivoProducto.BuscarNombreProducto(_detalle)==0) {
+        cout<<"Producto ya ingrsado"<<endl;
+        cout<<"Ingrese nuevamente,Detalle Producto:";
+        cargarCadena(_detalle,49);
+    }
     Amarca.mostrarCargaMarca();
     _IdMarca=Amarca.CargaMarcaID();
     cout<<"ID de la Marca: "<<_IdMarca<<endl;
@@ -49,6 +55,7 @@ void Producto::cargarProducto(int nuevoID) {
     cin>>_stock;
     fflush(stdin);
     _estado=true;
+
 }
 void Producto::mostrarProducto () {
     cout<<"ID del articulo: "<<_IdProducto<<endl;

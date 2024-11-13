@@ -3,9 +3,11 @@
 #include "MenuCliente.h"
 #include "MenuProducto.h"
 #include "MenuVendedor.h"
+#include "MenuRespaldo.h"
 #include "Cliente.h"
 #include "ArchivoCliente.h"
 #include <iostream>
+#include "MenuVenta.h"
 using namespace std;
 
 MenuOpciones::MenuOpciones() {
@@ -25,6 +27,7 @@ void MenuOpciones::opcion() {
     while(opc1!=0) {
         ms.mostrarMenuPrincipal(auth.nivelAcceso());
         cin>>opc1;
+        fflush(stdin);
         system("cls");
         if(auth.nivelAcceso()) {
             switch(opc1) {
@@ -41,7 +44,7 @@ void MenuOpciones::opcion() {
                 opcionSubMenuCuatro();
                 break;
             case 5:
-                ms.mostrarSubMenuCinco();
+                opcionSubMenuCinco();
                 break;
             case 0: {
                 cout<<"Saliendo del sistema"<<endl;
@@ -95,6 +98,7 @@ void MenuOpciones::opcionSubMenuUno() {
     while(opc != 0) {
         ms.mostrarSubMenuUno(auth.nivelAcceso(),"Clientes","Cliente");
         cin >> opc;
+        fflush(stdin);
         if(auth.nivelAcceso()) {
             switch(opc) {
             case 1:
@@ -157,6 +161,7 @@ void MenuOpciones::opcionSubMenuDos() {
     while(opc != 0) {
         ms.mostrarSubMenuUno(auth.nivelAcceso(),"Vendedores","Vendedores");
         cin >> opc;
+        fflush(stdin);
         if(auth.nivelAcceso()) {
             switch(opc) {
             case 1:
@@ -220,6 +225,7 @@ void MenuOpciones::opcionSubMenuTres() {
     while(opc != 0) {
         ms.mostrarSubMenuUno(auth.nivelAcceso(),"Productos","Producto");
         cin >> opc;
+        fflush(stdin);
         if(auth.nivelAcceso()) {
             switch(opc) {
             case 1:///AGREGAR PRODUCTO (ID UNICO)
@@ -239,6 +245,7 @@ void MenuOpciones::opcionSubMenuTres() {
                 while(opc2!=0){
                 ms.SubMenuListadoProducto();
                 cin>>opc2;
+                fflush(stdin);
                     switch(opc2){
                     case 1:
                         mProducto.listarProductoActivo();
@@ -294,25 +301,24 @@ void MenuOpciones::opcionSubMenuTres() {
         }
     }
 }
-
+///VENTAS
 void MenuOpciones::opcionSubMenuCuatro() {
     int opc = -1;
     MenuSalida ms;
-    MenuCliente mCliente;
+    MenuVenta mVenta;
     while(opc != 0) {
         ms.mostrarSubMenuCuatro();
         cin >> opc;
+        fflush(stdin);
         switch(opc) {
         case 1:
             cout << "Realizar Venta." << endl;
+            mVenta.realizarVenta(auth.VendedorActual());
             system("pause");
             break;
         case 2:
             cout << "Buscar Venta." << endl;
-            system("pause");
-            break;
-        case 3:
-            cout << "Mostrar listado Venta." << endl;
+            mVenta.mostrarDetallesVenta();
             system("pause");
             break;
         case 0:
@@ -329,25 +335,25 @@ void MenuOpciones::opcionSubMenuCuatro() {
     }
 }
 
+///MENU DE RESPALDOS
 void MenuOpciones::opcionSubMenuCinco() {
     int opc = -1;
     MenuSalida ms;
-    MenuCliente mCliente;
+    MenuRespaldo respaldo;
+
     while(opc != 0) {
-        ms.mostrarSubMenuCuatro();
+        ms.mostrarSubMenuCinco();
         cin >> opc;
+        fflush(stdin);
         switch(opc) {
         case 1:
-            cout << "Respaldo Cliente." << endl;
-            system("pause");
+            respaldo.OpcionCliente();
             break;
         case 2:
-            cout << "Respaldo Ventas." << endl;
-            system("pause");
+            respaldo.OpcionVendedor();
             break;
         case 3:
-            cout << "Respaldo Productos." << endl;
-            system("pause");
+            respaldo.OpcionProducto();
             break;
         case 4:
             cout << "Respaldo Ventas." << endl;
@@ -365,10 +371,6 @@ void MenuOpciones::opcionSubMenuCinco() {
         system("cls");
     }
 }
-
-
-
-
 
 MenuOpciones::~MenuOpciones() {
     //dtor

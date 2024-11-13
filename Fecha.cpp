@@ -30,15 +30,30 @@ Fecha::Fecha(int dia,int mes,int anio)
 ///setters
 void Fecha::setDia(int d)
 {
-    _dia=(d>= 1 && d<=31)? d : 1;
+    while(d< 1 || d>31){
+        cout<<"ingrese un dia valido: ";
+        cin>>d;
+        fflush(stdin);
+    }
+    _dia=d;
 }
 void Fecha::setMes(int m)
 {
-    _mes=(m>= 1 && m<=12)? m : 1;
+    while(m< 1 || m>12){
+        cout<<"ingrese un mes valido: ";
+        cin>>m;
+        fflush(stdin);
+    }
+    _mes=m;
 }
 void Fecha::setAnio(int a)
 {
-    _anio=(a>=0)? a : 2023;
+    while(a< 1900 || a>2025){
+        cout<<"ingrese un anio valido: ";
+        cin>>a;
+        fflush(stdin);
+    }
+    _anio=a;
 }
 
 ///getters
@@ -55,6 +70,13 @@ int Fecha::getAnio()
 {
     return _anio;
 }
+void Fecha::operator = (Fecha aux){
+    _dia=aux.getDia();
+    _mes=aux.getMes();
+    _anio=aux.getAnio();
+
+}
+
 string Fecha::getFechaCompleta() {
     std::stringstream ss;
     ss << (getDia() < 10 ? "0" : "") << getDia() << "/"
@@ -70,14 +92,18 @@ void Fecha::mostrarFecha()
 
 void Fecha::cargarFecha()
 {
+    int dia, mes, anio;
     cout<<"Ingrese dia: ";
-    cin>>_dia;
+    cin>>dia;
+    setDia(dia);
     fflush(stdin);
     cout<<"Ingrese mes: ";
-    cin>>_mes;
+    cin>>mes;
+    setMes(mes);
     fflush(stdin);
     cout<<"Ingrese anio: ";
-    cin>>_anio;
+    cin>>anio;
+    setAnio(anio);
     fflush(stdin);
 }
 

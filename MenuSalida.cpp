@@ -58,8 +58,6 @@ void MenuSalida::mostrarSubMenuCuatro() {
     cout << " ***Ventas*** "<<endl;
     cout << "1 - Realizar Venta "<<endl;
     cout << "2 - Buscar Venta "<<endl;
-    cout << "3 - Cancelar Venta "<<endl;
-    cout << "4 - Mostrar listado Venta "<<endl;
     cout << "0 - Volver al menú anterior "<<endl;
     cout << " Seleccione una opcion: ";
 }
@@ -69,6 +67,27 @@ void MenuSalida::mostrarSubMenuCinco() {
     cout << "2 - Vendedores "<<endl;
     cout << "3 - Productos "<<endl;
     cout << "4 - Ventas "<<endl;
+    cout << "0 - Volver al menú anterior "<<endl;
+    cout << " Seleccione una opcion: ";
+}
+void MenuSalida::mostrarSubMenuCincoUno() {
+    cout << " ***Respaldos*** "<<endl;
+    cout << "1 - Exportar Archivo de Clientes a .dat"<<endl;
+    cout << "2 - Exportar Archivo de Clientes a .csv"<<endl;
+    cout << "0 - Volver al menú anterior "<<endl;
+    cout << " Seleccione una opcion: ";
+}
+void MenuSalida::mostrarSubMenuCincoDos() {
+    cout << " ***Respaldos*** "<<endl;
+    cout << "1 - Exportar Archivo de Vendedores a .dat"<<endl;
+    cout << "2 - Exportar Archivo de Vendedores a .csv"<<endl;
+    cout << "0 - Volver al menú anterior "<<endl;
+    cout << " Seleccione una opcion: ";
+}
+void MenuSalida::mostrarSubMenuCincoTres() {
+    cout << " ***Respaldos*** "<<endl;
+    cout << "1 - Exportar Archivo de Producto a .dat"<<endl;
+    cout << "4 - Exportar Archivo de Producto a .csv"<<endl;
     cout << "0 - Volver al menú anterior "<<endl;
     cout << " Seleccione una opcion: ";
 }

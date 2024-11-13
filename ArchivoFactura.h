@@ -14,7 +14,7 @@ class ArchivoFactura
         ///METODOS
         bool BackUp();
         bool Guardar(const Factura& factura);
-        int Buscar(int IDFactura);
+        int BuscarPorID(int IDfactura);
         bool ModificarRegistro(const Factura& factura, int posicion);
         bool BajaRegistro();
         bool AltaRegistro();

@@ -39,6 +39,7 @@ int Categoria::proxID () {
     if(pos==0) {
         cout<<"Ingresar el primer ID de categoria: ";
         cin>>nuevoID;
+        fflush(stdin);
 
         return nuevoID;
     } else {
@@ -49,12 +50,6 @@ int Categoria::proxID () {
         return nuevoID;
     }
 }
-/*void Categoria::setGenerico() {
-    strcpy(_nombre,"Generico");
-    _IdCategoria=1;
-    strcpy(_descripcion,"Sin descripcion");
-    _estado=true;
-}*/
 
 void Categoria::setDescripcion(const char* descripcionCat) {
     strcpy(_descripcion,descripcionCat);

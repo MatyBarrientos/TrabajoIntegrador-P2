@@ -31,6 +31,7 @@ class Fecha
         ///Metodos de ayuda
         bool esBiciesto(int anio);
         bool fechaValida(int d,int m,int a);
+        void operator = (Fecha aux);
         ///
         void AgregarDia();
         void RestarDia();
