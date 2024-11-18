@@ -40,6 +40,16 @@ void definirVectorEntero(int* &v, int tam) {
         cout<<"Vector creado correctamente."<<endl;
     }
 }
+void definirVectorBool(bool* &v, int tam) {
+    v=new bool[tam]();
+    if (v==nullptr) {
+        cout<<"Error de asignación de Memoria"<<endl;
+        exit(-1);
+    } else {
+        cout<<"Vector creado correctamente."<<endl;
+    }
+}
+
 void definirVectorCliente(Cliente* &v, int tam) {
     v=new Cliente [tam]();
     if (v==nullptr) {

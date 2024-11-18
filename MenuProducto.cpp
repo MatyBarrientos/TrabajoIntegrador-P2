@@ -12,7 +12,7 @@ MenuProducto::MenuProducto() {} ///ctor
 void MenuProducto::agregarProducto() {
     Producto producto;
     ArchivoProducto ArchP;
-    producto.cargarProducto(producto.proxIDproducto());
+    producto.cargarProducto(ArchP.autoIncrementalID());
     ArchP.Guardar(producto);
     system("pause");
 }
@@ -167,7 +167,7 @@ void MenuProducto::filtroVenta() {
     cin>>IDmarca;
     fflush(stdin);
     archivoProducto.mostrarProductosPorMarcaYCategoria(IDcat,IDmarca);
-    //system("pause");
+    system("pause");
 
 }
 

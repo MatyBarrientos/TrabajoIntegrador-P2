@@ -39,8 +39,8 @@ void Producto::cargarProducto(int nuevoID) {
     cout<<"Detalle del producto: ";
     cargarCadena(_detalle,49);
     while(archivoProducto.BuscarNombreProducto(_detalle)==0) {
-        cout<<"Producto ya ingrsado"<<endl;
-        cout<<"Ingrese nuevamente,Detalle Producto:";
+        cout<<"Producto ya ingrsado."<<endl;
+        cout<<"Ingrese nuevamente. Detalle Producto:";
         cargarCadena(_detalle,49);
     }
     Amarca.mostrarCargaMarca();
@@ -81,14 +81,6 @@ void Producto::modificarProducto() { ///(OPC 5)
     cout<<"ID de la categoria: "<<_Idcategoria<<endl;
     Acategoria.mostrarCargaCategoria();
     _Idcategoria=Acategoria.CargaCategoriaID();
-
-    /*cout<<"1-PEDIGREE. / "<<"2-PROPLAN. / "<<"3-RAZA."<<endl;
-    cout<<"4-ROYAL CANIN. / "<<"5-WHISKAS. /"<<"6-KONGO."<<endl;
-    cin>>_IdMarca;
-    cout<<"ID de la categoria: "<<endl;
-    cout<<"1-ALIMENTO PARA PERROS. / "<<"2-ALIMENTO PARA GATOS."<<endl;
-    cout<<"3-PRODUCTOS DE LIMPIEZA. / "<<"4-ALIMENTOS. /"<<endl;
-    cin>>_Idcategoria;*/
     cout<<"Precio: $";
     cin>>_precio;
     fflush(stdin);

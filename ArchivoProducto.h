@@ -46,6 +46,7 @@ public:
 
     ///propuesto por Vero
     bool BuscarNombreProducto(const char* nombre);
+    int autoIncrementalID();
 
 protected:
 

@@ -171,7 +171,7 @@ void MenuVenta::mostrarDetallesVenta() {
         return;
     }
 
-   Factura factura = aFactura.Leer(posicionFactura);
+    Factura factura = aFactura.Leer(posicionFactura);
 
     // Obtener datos del cliente
     int idCliente = factura.getIdCliente();
@@ -191,34 +191,15 @@ void MenuVenta::mostrarDetallesVenta() {
     cout << "Detalles de Venta:" << endl;
 
     // Leer y mostrar cada detalle de la venta
-    /*int cantidadDetalles = factura.getCantidadDetalles();
-    int posicionInicio = factura.getPosicionDetalleInicio();*/
     int cantidadDetalles = aDetalleVenta.CantidadRegistros();
 
     for (int i = 0; i < cantidadDetalles; i++) {
         DetalleVenta detalle = aDetalleVenta.Leer(i);
-
-
-            if(detalle.getIdFactura()==IDVenta){
-        cout <<"ID: "<<detalle.getIdProducto() <<"|| Producto: " << aProducto.Leer(aProducto.Buscar(detalle.getIdProducto())).getDetalle() << "||"<< "Cantidad: " << detalle.getCantidad() << "||"<< "Precio Unitario: $" << detalle.getPrecioUnitario() <<"||"<< "Subtotal: $" << detalle.getSubTotal() << endl;
-        cout << endl;
-
-            }
-        /*DetalleVenta detalle = aDetalleVenta.Leer(posicionInicio + i);
-        Producto producto = aProducto.Leer(aProducto.Buscar(detalle.getIdProducto()));*/
-
+        if(detalle.getIdFactura()==IDVenta) {
+            cout <<"ID: "<<detalle.getIdProducto() <<"|| Producto: " << aProducto.Leer(aProducto.Buscar(detalle.getIdProducto())).getDetalle() << "||"<< "Cantidad: " << detalle.getCantidad() << "||"<< "Precio Unitario: $" << detalle.getPrecioUnitario() <<"||"<< "Subtotal: $" << detalle.getSubTotal() << endl;
+            cout << endl;
+        }
     }
-     /* for (int i = 0; i < cantidadDetalles; i++) {
-        DetalleVenta detalle = aDetalleVenta.Leer(posicionInicio + i);
-        Producto producto = aProducto.Leer(aProducto.Buscar(detalle.getIdProducto()));
-
-        cout << "Producto: " << producto.getDetalle() << endl;
-        cout << "Cantidad: " << detalle.getCantidad() << endl;
-        cout << "Precio Unitario: $" << detalle.getPrecioUnitario() << endl;
-        cout << "Subtotal: $" << detalle.getSubTotal() << endl;
-        cout << "----------------------------" << endl;
-    }*/
-
 }
 
 
