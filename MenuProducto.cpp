@@ -141,12 +141,26 @@ void MenuProducto::listarProductoBaja(){//OPC 2
     cout<<"Cantidad de registros DADOS DE BAJA: "<<contador<<endl;
     system("pause");
 }
-void MenuProducto::listarProductoMarca(){//OPC 3
-    cout<<"FASTA HACER"<<endl;
+void MenuProducto::listarProductoMarca(){///OPC 3
+    int idMarca;
+    ArchivoMarca archivoMarca;
+    ArchivoProducto archivoProducto;
+    archivoMarca.mostrarListaMarcas();
+    cout<<"ingrese el Id de la marca: "<<endl;
+    cin>>idMarca;
+    fflush(stdin);
+    archivoProducto.mostrarProductoPorMarca(idMarca);
     system("pause");
 }
-void MenuProducto::listarProductoCat(){//OPC 4
-    cout<<"FASTA HACER"<<endl;
+void MenuProducto::listarProductoCat(){///OPC 4
+    int idCategoria;
+    ArchivoCategoria archivoCategoria;
+    ArchivoProducto archivoProducto;
+    archivoCategoria.mostrarListaCategorias();
+    cout<<"ingrese el Id de la categoria: "<<endl;
+    cin>>idCategoria;
+    fflush(stdin);
+    archivoProducto.mostrarProductoPorCategoria(idCategoria);
     system("pause");
 }
 /////Filtrar por Categoria Marca
@@ -156,9 +170,9 @@ void MenuProducto::filtroVenta() {
     ArchivoCategoria archivoCategoria;
     ArchivoMarca archivoMarca;
     ArchivoProducto archivoProducto;
-    archivoCategoria.mostrarCategorias();
+    archivoCategoria.mostrarListaCategorias();
     cout<<endl;
-    cout<<"Categoria:";
+    cout<<"Ingrese el ID de la Categoria:";
     cin>>IDcat;
     fflush(stdin);
     archivoProducto.mostrarMarcasPorCategoria(IDcat);
@@ -167,8 +181,6 @@ void MenuProducto::filtroVenta() {
     cin>>IDmarca;
     fflush(stdin);
     archivoProducto.mostrarProductosPorMarcaYCategoria(IDcat,IDmarca);
-    system("pause");
-
 }
 
 MenuProducto::~MenuProducto() {} ///dtor

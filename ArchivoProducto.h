@@ -24,6 +24,8 @@ public:
     int BuscarCategoria(int IDCategoria);
     int BuscarMarca(int IDMarca);
     void mostrarMarcasPorCategoria(int idCategoria);
+    void mostrarProductoPorMarca(int idMarca);
+    void mostrarProductoPorCategoria(int idCategoria);
     void mostrarProductosPorMarcaYCategoria(int idCategoria, int idMarca);
     ///LEER
     Producto Leer(int posicion);

@@ -235,7 +235,28 @@ void ArchivoCategoria::Listar() {
     cout<<"----------------------------------------------"<<endl;
     fclose(pArchivo);
 }
+void ArchivoCategoria::mostrarListaCategorias(){
+    int ID, cantidad;
+    char nombre[20];
+    Categoria categoria;
 
+    cantidad = CantidadRegistros();
+    if (cantidad == 0) {
+        cout << "No hay categorias aún ingresadas" << endl;
+        return;
+    }else{
+        for (int i = 0; i < cantidad; i++) {
+            categoria = Leer(i);
+            if (categoria.getEstado()) {
+                ID = categoria.getID();
+                strcpy(nombre, categoria.getNombre());
+                cout<<"------------------------------"<<endl;
+                cout<<"ID "<<ID<<" -> "<<nombre<<endl;
+            }
+        }
+        cout<<"------------------------------"<<endl;
+    }
+}
 void ArchivoCategoria::mostrarCargaCategoria() {
     int contador = 0, ID, cantidad;
     char nombre[20];

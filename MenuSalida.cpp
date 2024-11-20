@@ -120,7 +120,8 @@ void MenuSalida::SubMenuListadoProducto(){
     cout<<"***Listar Productos por:***"<<endl;
     cout<<"1 - Estado ACTIVO " <<endl;
     cout<<"2 - Estado BAJA " <<endl;
-    cout<<"3 - CATEGORIA y MARCA " <<endl;
+    cout<<"3 - MARCA " <<endl;
+    cout<<"4 - CATEGORIA " <<endl;
     cout<<"0 - Volver al menu anterior "<<endl;
     cout<<" Seleccione una opcion: ";
 }

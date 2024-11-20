@@ -94,7 +94,7 @@ void MenuVenta::realizarVenta(int IDVendedor) {
         cout<<"Nro de Factura: "<<factura.getNroFactura()<<endl; //nro de factura
         archivoVendedor.BuscarIDvendedor(IDVendedor); //muestro vendedor
         cliente.mostrarDato(); //muestro cliente
-
+        mostrarDetalleEnVenta(factura.getNroFactura());
         mProducto.filtroVenta();
         cout << "Ingrese el ID del producto (0 para terminar): ";
         cin >> IDProducto;
@@ -201,7 +201,25 @@ void MenuVenta::mostrarDetallesVenta() {
         }
     }
 }
+void MenuVenta::mostrarDetalleEnVenta(int IDVenta) {
 
+    ArchivoFactura aFactura;
+    ArchivoDetalleVenta aDetalleVenta;
+    ArchivoCliente aCliente;
+    ArchivoVendedor aVendedor;
+    ArchivoProducto aProducto;
+
+    // Leer y mostrar cada detalle de la venta
+    int cantidadDetalles = aDetalleVenta.CantidadRegistros();
+
+    for (int i = 0; i < cantidadDetalles; i++) {
+        DetalleVenta detalle = aDetalleVenta.Leer(i);
+        if(detalle.getIdFactura()==IDVenta) {
+            cout <<"ID: "<<detalle.getIdProducto() <<"|| Producto: " << aProducto.Leer(aProducto.Buscar(detalle.getIdProducto())).getDetalle() << "||"<< "Cantidad: " << detalle.getCantidad() << "||"<< "Precio Unitario: $" << detalle.getPrecioUnitario() <<"||"<< "Subtotal: $" << detalle.getSubTotal() << endl;
+            cout << endl;
+        }
+    }
+}
 
 
 

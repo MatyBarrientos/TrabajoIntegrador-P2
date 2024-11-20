@@ -7,9 +7,9 @@ private:
     int _nroFactura;
     int _IdCliente;
     int _IdVendedor;
-    int _cantidadDetalles;         // Número de detalles para esta factura
-    int _posicionDetalleInicio;    // Posición en DetalleVenta.dat donde inician los detalles de esta factura la idea era que los registros tengan el mismo tamaño
-    float _total;                   // tratamos de evitar los vectores dínamicos a toda costa
+    int _cantidadDetalles;      // Número de detalles para esta factura
+    int _posicionDetalleInicio; // Posición en DetalleVenta.dat donde inician los detalles de esta factura la idea era que los registros tengan el mismo tamaño
+    float _total;               // tratamos de evitar los vectores dínamicos a toda costa
     Fecha _fechaVenta;
     bool _estado;
 public:

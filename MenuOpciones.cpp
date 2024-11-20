@@ -254,7 +254,10 @@ void MenuOpciones::opcionSubMenuTres() {
                         mProducto.listarProductoBaja();
                         break;
                     case 3:
-                        mProducto.filtroVenta();
+                        mProducto.listarProductoMarca();
+                        break;
+                    case 4:
+                        mProducto.listarProductoCat();
                         break;
                     case 0:
                         cout << "Saliendo al menu anterior..." << endl;

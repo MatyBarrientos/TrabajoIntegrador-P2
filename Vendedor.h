@@ -4,10 +4,9 @@
 class Vendedor : private Persona
 {
 private:
-
     int _nivelAcceso;
     int _IdVendedor;
-
+    char _password[20];
 public:
     Vendedor();
     Vendedor(Persona persona);
@@ -25,6 +24,7 @@ public:
     void setNivelUsuario (int nivelUsuario);
     void setIdVendedor (int IDvendedor);
     void setEstado(bool estado);
+    void setPassword(char* pass);
     ///Id
     int IdVendedor();
 
@@ -35,6 +35,7 @@ public:
     int getNivelUsuario ();
     int getIdVendedor ();
     bool getEstado();
+    char* getPassword();
     string getFecha();
 
     ////modificadores

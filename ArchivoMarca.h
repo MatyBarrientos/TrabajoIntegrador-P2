@@ -17,6 +17,8 @@ public:
     int CantidadRegistros();
     void Listar();
     bool BackUp();
+    ///(I.V)
+    void mostrarListaMarcas();
 
     int CargaMarcaID();
     void mostrarCargaMarca();

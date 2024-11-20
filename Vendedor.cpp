@@ -12,6 +12,7 @@ Vendedor::Vendedor() {
 Vendedor::~Vendedor() {
     _nivelAcceso=1;
     _IdVendedor=0;
+    strcpy(_password,"vacio");
 }
 
 Vendedor::Vendedor(Persona persona, int nivelAcceso, int IDvendedor):Persona(persona) {
@@ -30,10 +31,12 @@ void Vendedor::mostrar() {
 
 void Vendedor::cargar(int DNI) {
     Persona::cargar(DNI);
+    _IdVendedor=IdVendedor();
     cout<<"Nivel de acceso: ";
     cin>>_nivelAcceso;
     fflush(stdin);
-    _IdVendedor=IdVendedor();
+    cout<<"Password: ";
+    cargarCadena(_password,19);
 }
 void Vendedor::cargar() {
     Persona::cargar();
@@ -41,6 +44,8 @@ void Vendedor::cargar() {
     cin>>_nivelAcceso;
     fflush(stdin);
     _IdVendedor=IdVendedor();
+    cout<<"Password: ";
+    cargarCadena(_password,19);
 }
 void Vendedor::cargarVendedor() {
     Persona::cargar();
@@ -48,6 +53,8 @@ void Vendedor::cargarVendedor() {
     cout<<"Nivel de acceso: ";
     cin>>_nivelAcceso;
     fflush(stdin);
+    cout<<"Password: ";
+    cargarCadena(_password,19);
 }
 
 void Vendedor::modificarVendedor() {
@@ -77,6 +84,9 @@ int Vendedor::getIdUsuario () {
 bool Vendedor::getEstado() {
     return Persona::getEstado();
 }
+char* Vendedor::getPassword(){
+    return _password;
+}
 string Vendedor::getFecha(){
 return Persona::getFecha().getFechaCompleta();}
 
@@ -91,6 +101,9 @@ void Vendedor::setIdVendedor(int IDvendedor) {
 }
 void Vendedor::setEstado(bool estado) {
     Persona::setEstado(estado);
+}
+void Vendedor::setPassword(char* pass){
+    strcpy(_password,pass);
 }
 ///////////////
 void Vendedor::modificarNombre() {
@@ -144,12 +157,12 @@ void Vendedor::modificarNivel() {
 }
 
 ////
-int Vendedor::IdVendedor () { ///RECIBE EL ARCHIVO Vendedor
+int Vendedor::IdVendedor () {
     ArchivoVendedor aVendedor;
     int pos, nuevoID;
     pos=aVendedor.CantidadRegistros(); ///OBTENEMOS CUANTO REGISTROS TIENE EL ARCHIVO
     if(pos==0) { /// PREGUNTAMOS SI NO HAY REGISTROS EN EL ARCHIVO
-        cout<<"Ingresar el primer ID de productos: ";
+        cout<<"Ingresar el primer ID: ";
         cin>>nuevoID;
         fflush(stdin);
         return nuevoID; ///RETORNAMOS EL 1ER ID INGRESADO POR TECLADO

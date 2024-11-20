@@ -178,6 +178,28 @@ void ArchivoMarca::Listar() {
     }
     fclose(pArchivo);
 }
+void ArchivoMarca::mostrarListaMarcas(){
+    int ID, cantidad;
+    char nombre[20];
+    Marca marca;
+
+    cantidad = CantidadRegistros();
+    if (cantidad == 0) {
+        cout << "No hay marcas aún ingresadas" << endl;
+        return;
+    }else{
+        for (int i = 0; i < cantidad; i++) {
+            marca = Leer(i);
+            if (marca.getEstado()) {
+                ID = marca.getIdMarca();
+                strcpy(nombre, marca.getNombre());
+                cout<<"----------------------"<<endl;
+                cout<<"ID "<<ID<<" -> "<<nombre<<endl;
+            }
+        }
+        cout<<"----------------------"<<endl;
+    }
+}
 
 void ArchivoMarca::mostrarCargaMarca() {
     int contador = 0, ID, cantidad;

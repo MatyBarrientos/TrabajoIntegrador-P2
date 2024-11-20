@@ -143,6 +143,7 @@ int ArchivoProducto::autoIncrementalID() {
     // Ir al final del archivo para calcular el tamaño
     fseek(pArchivo, 0, SEEK_END);
     int cantBytes = ftell(pArchivo);
+    int variable= cantBytes-sizeof(Producto);
 
     if (cantBytes == 0) {
         fclose(pArchivo);
@@ -150,8 +151,9 @@ int ArchivoProducto::autoIncrementalID() {
     }
 
     // Mover el puntero al inicio del último registro
-    fseek(pArchivo, -sizeof(Producto), SEEK_END); ///-> lo menciono kloster en clase -sizeof(CLASE)
-    Producto producto;
+    fseek(pArchivo,variable, SEEK_SET); ///-> lo menciono kloster en clase -sizeof(CLASE)
+    Producto producto;                 ///se reemplazó por un warning, en su lugar vas desde el
+    ///principio SEEK_SET hasta el inicio del ultimo registro
 
     if (fread(&producto, sizeof(Producto), 1, pArchivo) == 1) {
         ID = producto.getIdProducto() + 1;
@@ -232,11 +234,44 @@ bool ArchivoProducto::BackUp() {
     cout << "Backup completado con exito." << endl;
     return true;
 }
-
-void ArchivoProducto::mostrarMarcasPorCategoria(int idCategoria) {
+void ArchivoProducto::mostrarProductoPorMarca(int idMarca) {
     int cantidad = CantidadRegistros();
+    Producto producto;
+    ArchivoMarca archivoMarca;
+    Marca marca;
+    int pos = archivoMarca.Buscar(idMarca);
+    marca=archivoMarca.Leer(pos);
+    cout<<"Productos de la marca "<<marca.getNombre()<<": "<<endl;
+    for (int i=0; i<cantidad; i++) {
+        producto=Leer(i);
+        if(producto.getIdMarca()==idMarca && producto.getEstado()) {
+            cout<<"-----------------------------------"<<endl;
+            producto.mostrarProducto();
+        }
+    }
+    cout<<"-----------------------------------"<<endl;
+}
+void ArchivoProducto::mostrarProductoPorCategoria(int idCategoria) {
+    int cantidad = CantidadRegistros();
+    Producto producto;
+    ArchivoCategoria archivoCategoria;
+    Categoria categoria;
+    int pos = archivoCategoria.Buscar(idCategoria);
+    categoria=archivoCategoria.Leer(pos);
+    cout<<"Productos de la categoria "<<categoria.getNombre()<<": "<<endl;
+    for (int i=0; i<cantidad; i++) {
+        producto=Leer(i);
+        if(producto.getIdCategoria()==idCategoria && producto.getEstado()) {
+            cout<<"----------------------------------------------"<<endl;
+            producto.mostrarProducto();
+        }
+    }
+    cout<<"----------------------------------------------"<<endl;
+}
+void ArchivoProducto::mostrarMarcasPorCategoria(int idCategoria) {
+    int cantidad = CantidadRegistros(); ///CANTIDAD DE REGISTROS DE PRODUCTOS
     ArchivoMarca aMarca;
-    int TAM = aMarca.CantidadRegistros();
+    int TAM = aMarca.CantidadRegistros(); ///CANTIDAD DE REGISTROS DE MARCA
     bool *vMarca;
     vMarca=nullptr;
     definirVectorBool(vMarca,TAM);//vector en 0 o false, sí hay match cambio el estado (true) para evitar mostrar repetidos
@@ -250,12 +285,14 @@ void ArchivoProducto::mostrarMarcasPorCategoria(int idCategoria) {
         int IDmarca=producto.getIdMarca(); //va a ser el indice de mi vector de bools
         if(!(vMarca[IDmarca-1])) { //le restamos 1 porque nuestros ID arrancan en 1 y reviso el estado de ese elemento.
             if (producto.getEstado() && producto.getIdCategoria() == idCategoria) {
+                cout<<"----------------------"<<endl;
                 cout << "ID: " << producto.getIdMarca() << " -> " << aMarca.Leer(Buscar(producto.getIdMarca())).getNombre() << endl;
                 vMarca[producto.getIdMarca()-1]=true; //cambio el estado del elemento de mi vector de bool
                 encontrado=true;
             }
         }
     }
+    cout<<"----------------------"<<endl;
     if (!encontrado) {
         cout << "No se encontraron marcas para esta categoria." << endl;
     }
@@ -266,15 +303,17 @@ void ArchivoProducto::mostrarProductosPorMarcaYCategoria(int idCategoria, int id
     Producto producto;
 
     bool encontrado = false;
+    cout << "Productos disponibles para la categoria y marca seleccionadas:" << endl;
     for (int i = 0; i < cantidad; i++) {
         producto = Leer(i);
         if (producto.getIdCategoria() == idCategoria && producto.getIdMarca() == idMarca && producto.getEstado()) {
-            cout << "Productos disponibles para la categoria y marca seleccionadas:" << endl;
+            cout<<"-------------------------------------------------------------------------"<<endl;
             cout << "ID Producto: " << producto.getIdProducto() << " -> " << producto.getDetalle()
                  << ", Precio: $" << producto.getPrecioVenta() <<" Stock-> "<<producto.getStock()<<endl;
             encontrado = true;
         }
     }
+    cout<<"-------------------------------------------------------------------------"<<endl;
     if (!encontrado) {
         cout << "No se encontraron productos para esta marca en la categoria seleccionada." << endl;
     }

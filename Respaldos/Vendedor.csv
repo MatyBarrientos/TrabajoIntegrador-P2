@@ -1,8 +1,6 @@
-Nombre,Apellido,DNI,IDVendedor,Fecha Nacimiento,Nivel Acceso
-Bruno,Fondati,44173050,1,02/05/2002,2
-Isaias,Velazquez,2936174,2,05/10/1998,2
-Matias,Barrientos,3728104,3,04/12/1997,2
-Daniel,Kloster,44172140,4,02/04/1976,2
-Lionel,Messi,92379578,5,02/08/1987,2
-Cristiano,Ronaldo,74618273,6,05/02/1985,1
-Luis,Suarez,47182847,7,24/01/1987,1
+IDVendedor,Nombre,Apellido,DNI,Fecha Nacimiento,Nivel Acceso,Password
+1,Matias,Barrientos,36323429,06/09/1991,2,Barrientos01
+2,Bruno,Fondati,44173050,02/05/2002,2,Fondati02
+3,Isaias,Velazquez,36200100,16/08/1991,2,Velazquez03
+4,Daniel,Kloster,20100300,14/07/1970,1,Gentes04
+5,Veronica,Cabonari,33999888,02/03/1990,1,Prog2

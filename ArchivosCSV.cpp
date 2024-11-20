@@ -89,12 +89,13 @@ bool ArchivosCSV::escribirFilaVendedor() {
     }
 
     for (int j = 0; j < cantidadRegistros; j++) {
-        file << vVendedores[j].getNombre() << ","
+        file << vVendedores[j].getIdVendedor() << ","
+             << vVendedores[j].getNombre() << ","
              << vVendedores[j].getApellido() << ","
              << vVendedores[j].getIdUsuario() << ","
-             << vVendedores[j].getIdVendedor() << ","
              << vVendedores[j].getFecha() <<","
-             << vVendedores[j].getNivelUsuario()
+             << vVendedores[j].getNivelUsuario()<<","
+             << vVendedores[j].getPassword()
              << endl; ///NUEVA LINEA PARA CADA REGISTRO
     }
 

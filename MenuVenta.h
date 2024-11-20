@@ -10,7 +10,7 @@ class MenuVenta
         //void venta();
         Cliente ObtenerCliente();
         void realizarVenta(int IDVendedor);
-
+        void mostrarDetalleEnVenta(int IDVenta);
         void mostrarDetallesVenta();
 
     protected:

@@ -1,5 +1,7 @@
 #include "Autenticacion.h"
 #include <iostream>
+#include "Funciones.h"
+#include <cstring>
 using namespace std;
 
 Autenticacion::Autenticacion()
@@ -42,9 +44,25 @@ bool Autenticacion::ingresarSistema()
         else if (pos != -1)
         {
             vendedorActual = archivoVendedor.Leer(pos);
-            cout << "Bienvenido " << vendedorActual.getApellido() << " " << vendedorActual.getNombre() << endl;
-            usuarioEncontrado = true;
-            return true;
+            while(!usuarioEncontrado){
+                cout<<"Ingrese Password: ";
+                char pass[20];
+                cargarCadena(pass,19);
+                if(strcmp(pass,vendedorActual.getPassword())==0){
+
+                    system("cls");
+                    cout << "Bienvenido " << vendedorActual.getApellido() << " " << vendedorActual.getNombre() << endl;
+                    usuarioEncontrado = true;
+                    return true;
+
+                }else if (strcmp(pass,"0")==0){
+                    cout<<"Saliendo del sistema."<<endl;
+                    return false;
+
+                }else {
+                    cout<<"Contraseña incorrecta."<<endl;
+                }
+            }
         }
         else
         {

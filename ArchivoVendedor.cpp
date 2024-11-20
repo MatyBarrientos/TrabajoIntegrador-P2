@@ -262,7 +262,7 @@ void ArchivoVendedor::Listar() {
 
 vector<string> ArchivoVendedor::getEncabezados()
 {
-    return {"Nombre", "Apellido", "DNI","IDVendedor","Fecha Nacimiento", "Nivel Acceso" };
+    return {"IDVendedor","Nombre", "Apellido", "DNI","Fecha Nacimiento", "Nivel Acceso", "Password" };
 }
 
 Vendedor* ArchivoVendedor::listarEnVectorD()
@@ -324,7 +324,8 @@ void ArchivoVendedor::BuscarIDvendedor (int IDvendedor){
     for(int i=0;i<cantReg;i++){
         fread(&vendedor, sizeof(Vendedor),1,pArchivo);
         if(vendedor.getIdVendedor()==IDvendedor){
-            cout<<"ID vendedor: "<<vendedor.getIdVendedor()<<", "<<vendedor.getApellido()<<" "<<vendedor.getNombre()<<endl;
+            cout<<"Vendedor: "<<vendedor.getApellido()<<" "<<vendedor.getNombre()<<", "<<"ID vendedor: "<<vendedor.getIdVendedor()<<endl;
+            //cout<<"ID vendedor: "<<vendedor.getIdVendedor()<<", "<<vendedor.getApellido()<<" "<<vendedor.getNombre()<<endl;
         }
     }
     fclose(pArchivo);

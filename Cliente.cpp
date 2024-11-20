@@ -146,7 +146,8 @@ void Cliente::modificarTelefono() {
     cout<<"Cambios realizados"<<endl;
 }
 void Cliente::mostrarDato() {
-    cout<<"DNI: "<<getIdCliente()<<", "<<getNombre()<<" "<<getApellido()<<endl;
+    cout<<"Cliente: "<<getNombre()<<" "<<getApellido()<<", DNI: "<<getIdCliente()<<endl;
+    //cout<<"DNI: "<<getIdCliente()<<", "<<getNombre()<<" "<<getApellido()<<endl;
 }
 
 
